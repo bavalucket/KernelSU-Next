@@ -421,7 +421,7 @@ private fun InfoCard() {
             val managerVersion = getManagerVersion(context)
             InfoCardItem(
                 stringResource(R.string.home_manager_version),
-                "${managerVersion.first}-next-magic (${managerVersion.second})"
+                "${managerVersion.first}-next (${managerVersion.second})"
             )
 
             Spacer(Modifier.height(16.dp))
@@ -436,7 +436,7 @@ private fun InfoCard() {
 @Composable
 fun Next() {
     val uriHandler = LocalUriHandler.current
-    val url = stringResource(R.string.home_next_kernelsu_announce)
+    val url = stringResource(R.string.home_next_kernelsu_repo)
 
     ElevatedCard {
 

@@ -2,14 +2,14 @@ name: Build Manager
 
 on:
   push:
-    branches: [ "magic" ]
+    branches: [ "next" ]
     paths:
       - '.github/workflows/build-manager.yml'
       - 'manager/**'
       - 'kernel/**'
       - 'userspace/ksud/**'
   pull_request:
-    branches: [ "magic" ]
+    branches: [ "next" ]
     paths:
       - 'manager/**'
   workflow_call:
