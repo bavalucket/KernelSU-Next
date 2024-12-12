@@ -104,7 +104,6 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             }
             Next()
             InfoCard()
-            DonateCard()
             LearnMoreCard()
             Spacer(Modifier)
         }
@@ -361,33 +360,6 @@ fun LearnMoreCard() {
                 Spacer(Modifier.height(4.dp))
                 Text(
                     text = stringResource(R.string.home_click_to_learn_kernelsu),
-                    style = MaterialTheme.typography.bodyMedium
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun DonateCard() {
-    val uriHandler = LocalUriHandler.current
-
-    ElevatedCard {
-
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .clickable {
-                uriHandler.openUri("https://patreon.com/weishu")
-            }
-            .padding(24.dp), verticalAlignment = Alignment.CenterVertically) {
-            Column {
-                Text(
-                    text = stringResource(R.string.home_support_title),
-                    style = MaterialTheme.typography.titleSmall
-                )
-                Spacer(Modifier.height(4.dp))
-                Text(
-                    text = stringResource(R.string.home_support_content),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
