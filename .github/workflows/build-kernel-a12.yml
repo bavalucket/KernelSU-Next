@@ -1,14 +1,14 @@
 name: Build Kernel - Android 12
 on:
   push:
-    branches: ["main", "ci", "checkci"]
+    branches: [ "next" ]
     paths:
       - ".github/workflows/build-kernel-a12.yml"
       - ".github/workflows/gki-kernel.yml"
       - ".github/scripts/build_a12.sh"
       - "kernel/**"
   pull_request:
-    branches: ["main"]
+    branches: [ "next" ]
     paths:
       - ".github/workflows/build-kernel-a12.yml"
       - ".github/workflows/gki-kernel.yml"
@@ -17,7 +17,7 @@ on:
   workflow_call:
 jobs:
   build-kernel:
-    if: github.event_name != 'pull_request' && github.ref != 'refs/heads/checkci'
+    if: github.event_name != 'pull_request' && github.ref != 'refs/heads/next'
     strategy:
       matrix:
         include:
@@ -41,7 +41,7 @@ jobs:
   upload-artifacts:
     needs: build-kernel
     runs-on: ubuntu-latest
-    if: ${{ ( github.event_name != 'pull_request' && github.ref == 'refs/heads/main' ) || github.ref_type == 'tag' || github.ref == 'refs/heads/ci' }}
+    if: ${{ ( github.event_name != 'pull_request' && github.ref == 'refs/heads/next' ) || github.ref_type == 'tag' || github.ref == 'refs/heads/next' }}
     env:
       CHAT_ID: ${{ secrets.CHAT_ID }}
       BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
@@ -110,7 +110,7 @@ jobs:
           path: Image-android12*/*.img.gz
 
   check-build-kernel:
-    if: (github.event_name == 'pull_request' && !github.event.pull_request.draft) || github.ref == 'refs/heads/checkci'
+    if: (github.event_name == 'pull_request' && !github.event.pull_request.draft) || github.ref == 'refs/heads/next'
     uses: ./.github/workflows/gki-kernel.yml
     with:
       version: android12-5.10
