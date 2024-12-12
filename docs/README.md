@@ -44,5 +44,5 @@ For information on reporting security vulnerabilities in KernelSU, see [SECURITY
 - [Magisk](https://github.com/topjohnwu/Magisk): the powerful root tool.
 - [genuine](https://github.com/brevent/genuine/): apk v2 signature validation.
 - [Diamorphine](https://github.com/m0nad/Diamorphine): some rootkit skills.
-- [KernelSU](https://github.com/tiann/KernelSU): Thanks to him or else KernelSU Next wouldn't even exist.
+- [KernelSU](https://github.com/tiann/KernelSU): thanks to tiann or else KernelSU Next wouldn't even exist.
 - [Magic Mount Port](https://github.com/5ec1cff/KernelSU/blob/main/userspace/ksud/src/magic_mount.rs): 💜 for saving KernelSU!
