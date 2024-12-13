@@ -361,6 +361,12 @@ private fun InfoCard() {
             InfoCardItem(stringResource(R.string.home_kernel), uname.release)
 
             Spacer(Modifier.height(16.dp))
+            InfoCardItem(
+                stringResource(R.string.home_android),
+                "${Build.VERSION.RELEASE} (${Build.VERSION.SDK_INT})"
+            )
+
+            Spacer(Modifier.height(16.dp))
             val managerVersion = getManagerVersion(context)
             InfoCardItem(
                 stringResource(R.string.home_manager_version),

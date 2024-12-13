@@ -71,6 +71,7 @@ fun getBugreportFile(context: Context): File {
         pw.println("MODEL: " + Build.MODEL)
         pw.println("PRODUCT: " + Build.PRODUCT)
         pw.println("MANUFACTURER: " + Build.MANUFACTURER)
+        pw.println("ANDROID: " + Build.VERSION.RELEASE)
         pw.println("SDK: " + Build.VERSION.SDK_INT)
         pw.println("PREVIEW_SDK: " + Build.VERSION.PREVIEW_SDK_INT)
         pw.println("FINGERPRINT: " + Build.FINGERPRINT)
