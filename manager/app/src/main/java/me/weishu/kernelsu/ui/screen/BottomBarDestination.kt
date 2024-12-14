@@ -22,5 +22,5 @@ enum class BottomBarDestination(
     Home(HomeScreenDestination, R.string.home, Icons.Filled.Home, Icons.Outlined.Home, false),
     SuperUser(SuperUserScreenDestination, R.string.superuser, Icons.Filled.Security, Icons.Outlined.Security, true),
     Module(ModuleScreenDestination, R.string.module, Icons.Filled.Layers, Icons.Outlined.Layers, true),
-    Settings(SettingScreenDestination, R.string.module, Icons.Filled.Settings, Icons.Outlined.Settings, true)
+    Settings(SettingScreenDestination, R.string.settings, Icons.Filled.Settings, Icons.Outlined.Settings, true)
 }
