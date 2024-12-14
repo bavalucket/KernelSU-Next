@@ -32,7 +32,6 @@ import androidx.core.content.pm.PackageInfoCompat
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
-import com.ramcosta.composedestinations.generated.destinations.SettingScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -53,9 +52,6 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         topBar = {
             TopBar(
                 kernelVersion,
-                onSettingsClick = {
-                    navigator.navigate(SettingScreenDestination)
-                },
                 onInstallClick = {
                     navigator.navigate(InstallScreenDestination)
                 },
@@ -104,6 +100,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             }
             NextCard()
             InfoCard()
+            EXperimentalCard()
             Spacer(Modifier)
         }
     }
@@ -166,7 +163,6 @@ fun RebootDropdownItem(@StringRes id: Int, reason: String = "") {
 private fun TopBar(
     kernelVersion: KernelVersion,
     onInstallClick: () -> Unit,
-    onSettingsClick: () -> Unit,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     TopAppBar(
@@ -206,13 +202,6 @@ private fun TopBar(
                     RebootDropdownItem(id = R.string.reboot_download, reason = "download")
                     RebootDropdownItem(id = R.string.reboot_edl, reason = "edl")
                 }
-            }
-
-            IconButton(onClick = onSettingsClick) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = stringResource(id = R.string.settings)
-                )
             }
         },
         windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal),
@@ -400,6 +389,51 @@ fun NextCard() {
                 Spacer(Modifier.height(4.dp))
                 Text(
                     text = stringResource(R.string.home_next_kernelsu_body),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+        }
+    }
+}
+
+@Composable
+fun EXperimentalCard() {
+    /*val uriHandler = LocalUriHandler.current
+    val url = stringResource(R.string.home_experimental_kernelsu_repo)
+    */
+
+    ElevatedCard {
+
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            /*.clickable {
+                uriHandler.openUri(url)
+            }
+            */
+            .padding(24.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column {
+                Text(
+                    text = stringResource(R.string.home_experimental_kernelsu),
+                    style = MaterialTheme.typography.titleSmall
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.home_experimental_kernelsu_body),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.home_experimental_kernelsu_body_point_1),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    text = stringResource(R.string.home_experimental_kernelsu_body_point_2),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(Modifier.height(2.dp))
+                Text(
+                    text = stringResource(R.string.home_experimental_kernelsu_body_point_3),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }

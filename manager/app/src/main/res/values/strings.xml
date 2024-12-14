@@ -49,6 +49,12 @@
     <string name="home_next_kernelsu">🔥 Next Build</string>
     <string name="home_next_kernelsu_repo">https://github.com/rifsxd/KernelSU</string>
     <string name="home_next_kernelsu_body">Next modifications branch. Check it out on GitHub!</string>
+    <string name="home_experimental_kernelsu">⚠️ Experimental Development Warning!</string>
+    <string name="home_experimental_kernelsu_repo">127.0.0.1</string>
+    <string name="home_experimental_kernelsu_body">Next is a non-official build which is always under active experimental development. It is provided as-is, with no guarantees of stability, performance, or reliability.</string>
+    <string name="home_experimental_kernelsu_body_point_1"> • Use at Your Own Risk: It may experience crashes, unexpected behavior, or cause system issues.</string>
+    <string name="home_experimental_kernelsu_body_point_2"> • No Warranty: The developers are not responsible for any data loss, system damage, or other consequences arising from its use.</string>
+    <string name="home_experimental_kernelsu_body_point_3"> • For Testing Purposes Only: It is intended for users who understand the risks and are comfortable troubleshooting issues.</string>
     <string name="about_source_code"><![CDATA[View source code at %1$s]]></string>
     <string name="profile" translatable="false">App Profile</string>
     <string name="profile_default">Default</string>
