@@ -362,5 +362,3 @@ void ksu_sucompat_exit()
 	unregister_kprobe(&pts_unix98_lookup_kp);
 #endif
 }
-
-
