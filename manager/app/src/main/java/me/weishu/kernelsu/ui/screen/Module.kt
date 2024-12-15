@@ -469,26 +469,6 @@ fun ModuleItem(
 
         Column(
             modifier = Modifier
-                .run {
-                    if (module.hasWebUi) {
-                        toggleable(
-                            value = isChecked,
-                            interactionSource = interactionSource,
-                            role = Role.Button,
-                            indication = indication,
-                            onValueChange = { onClick(module) }
-                        )
-                    } else {
-                        toggleable(
-                            value = isChecked,
-                            interactionSource = interactionSource,
-                            role = Role.Switch,
-                            indication = indication,
-                            onValueChange = onCheckChanged,
-                            enabled = !module.update
-                        )
-                    }
-                }
                 .padding(22.dp, 18.dp, 22.dp, 12.dp)
         ) {
             Row(

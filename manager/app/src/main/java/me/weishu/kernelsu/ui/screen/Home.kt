@@ -11,12 +11,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Archive
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.outlined.Block
-import androidx.compose.material.icons.outlined.CheckCircle
-import androidx.compose.material.icons.outlined.Warning
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -40,6 +36,7 @@ import me.weishu.kernelsu.R
 import me.weishu.kernelsu.ui.component.rememberConfirmDialog
 import me.weishu.kernelsu.ui.util.*
 import me.weishu.kernelsu.ui.util.module.LatestVersionInfo
+import androidx.compose.ui.graphics.vector.ImageVector
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination<RootGraph>(start = true)
@@ -341,29 +338,59 @@ private fun InfoCard() {
             val uname = Os.uname()
 
             @Composable
-            fun InfoCardItem(label: String, content: String) {
-                contents.appendLine(label).appendLine(content).appendLine()
-                Text(text = label, style = MaterialTheme.typography.bodyLarge)
-                Text(text = content, style = MaterialTheme.typography.bodyMedium)
+            fun InfoCardItem(label: String, content: String, icon: ImageVector? = null) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (icon != null) {
+                        Icon(
+                            imageVector = icon,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .padding(end = 8.dp)
+                        )
+                    }
+                    Column {
+                        Text(
+                            text = label,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Text(
+                            text = content,
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
+                }
+                
             }
 
-            InfoCardItem(stringResource(R.string.home_kernel), uname.release)
+
+            InfoCardItem(stringResource(R.string.home_kernel),
+                uname.release,
+                icon = Icons.Filled.Memory,
+            )
 
             Spacer(Modifier.height(16.dp))
             InfoCardItem(
                 stringResource(R.string.home_android),
-                "${Build.VERSION.RELEASE} (${Build.VERSION.SDK_INT})"
+                "${Build.VERSION.RELEASE} (${Build.VERSION.SDK_INT})",
+                icon = Icons.Filled.Android,
+
             )
 
             Spacer(Modifier.height(16.dp))
             val managerVersion = getManagerVersion(context)
             InfoCardItem(
                 stringResource(R.string.home_manager_version),
-                "${managerVersion.first}-next (${managerVersion.second})"
+                "${managerVersion.first}-next (${managerVersion.second})",
+                icon = Icons.Filled.Article,
             )
 
             Spacer(Modifier.height(16.dp))
-            InfoCardItem(stringResource(R.string.home_selinux_status), getSELinuxStatus())
+            InfoCardItem(
+                label = stringResource(R.string.home_selinux_status),
+                content = getSELinuxStatus(),
+                icon = Icons.Filled.Security,
+            )
         }
     }
 }
