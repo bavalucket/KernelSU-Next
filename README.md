@@ -5,6 +5,7 @@
 A Kernel-based root solution for Android devices.
 
 [![Latest release](https://img.shields.io/github/v/release/rifsxd/KernelSU?label=Release&logo=github)](https://github.com/rifsxd/KernelSU/releases/latest)
+[![Nightly Release](https://img.shields.io/badge/Nightly%20release-gray?logo=hackthebox&logoColor=fff)]([https://nightly.link/bmax121/APatch/workflows/build/main/APatch](https://nightly.link/rifsxd/KernelSU/workflows/build-manager/next/manager))
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-orange.svg?logo=gnu)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 [![GitHub License](https://img.shields.io/github/license/tiann/KernelSU?logo=gnu)](/LICENSE)
 
