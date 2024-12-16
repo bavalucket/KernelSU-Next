@@ -352,7 +352,7 @@ private fun InfoCard() {
                             imageVector = icon,
                             contentDescription = null,
                             modifier = Modifier
-                                .padding(end = 10.dp)
+                                .padding(end = 16.dp)
                         )
                     }
                     Column {
