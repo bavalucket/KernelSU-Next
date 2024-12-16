@@ -3,6 +3,8 @@ package me.weishu.kernelsu.ui.screen
 import android.content.Context
 import android.os.Build
 import android.os.PowerManager
+import android.os.Handler
+import android.os.Looper
 import android.system.Os
 import androidx.annotation.StringRes
 import androidx.compose.animation.*
@@ -67,7 +69,11 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         ) {
             val isManager = Natives.becomeManager(ksuApp.packageName)
             SideEffect {
-                if (isManager) install()
+                if (isManager) {
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        install()
+                    }, 4000)
+                }
             }
             val ksuVersion = if (isManager) Natives.version else null
             val lkmMode = ksuVersion?.let {

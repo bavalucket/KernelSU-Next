@@ -74,7 +74,7 @@ private fun AboutCardContent() {
                 Image(
                     painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "icon",
-                    modifier = Modifier.scale(1.4f)
+                    modifier = Modifier.scale(1.2f)
                 )
             }
 
