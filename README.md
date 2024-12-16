@@ -1,4 +1,4 @@
-# KernelSU (Next Modifications Branch)
+# KernelSU Next
 
 <img src="assets/kernelsu_next.png" style="width: 96px;" alt="logo">
 
