@@ -72,7 +72,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
                 if (isManager) {
                     Handler(Looper.getMainLooper()).postDelayed({
                         install()
-                    }, 4000)
+                    }, 2000)
                 }
             }
             val ksuVersion = if (isManager) Natives.version else null
@@ -249,7 +249,7 @@ private fun StatusCard(
                     val workingText =
                         "${stringResource(id = R.string.home_working)}$workingMode$safeMode"
 
-                    Icon(Icons.Outlined.CheckCircle, stringResource(R.string.home_working))
+                    Icon(Icons.Filled.LocalFireDepartment, stringResource(R.string.home_working))
                     Column(Modifier.padding(start = 20.dp)) {
                         Text(
                             text = workingText,
@@ -275,7 +275,7 @@ private fun StatusCard(
                 }
 
                 kernelVersion.isGKI() -> {
-                    Icon(Icons.Outlined.Warning, stringResource(R.string.home_not_installed))
+                    Icon(Icons.Filled.AutoFixHigh, stringResource(R.string.home_not_installed))
                     Column(Modifier.padding(start = 20.dp)) {
                         Text(
                             text = stringResource(R.string.home_not_installed),
@@ -290,7 +290,7 @@ private fun StatusCard(
                 }
 
                 else -> {
-                    Icon(Icons.Outlined.Block, stringResource(R.string.home_failure))
+                    Icon(Icons.Filled.Dangerous, stringResource(R.string.home_failure))
                     Column(Modifier.padding(start = 20.dp)) {
                         Text(
                             text = stringResource(R.string.home_failure),
@@ -388,7 +388,7 @@ private fun InfoCard() {
             InfoCardItem(
                 stringResource(R.string.home_manager_version),
                 "${managerVersion.first}-next (${managerVersion.second})",
-                icon = Icons.Filled.Article,
+                icon = Icons.AutoMirrored.Filled.Article,
             )
 
             Spacer(Modifier.height(16.dp))
