@@ -1,6 +1,6 @@
 # KernelSU (Next Modifications Branch)
 
-<img src="https://kernelsu.org/logo.png" style="width: 96px;" alt="logo">
+<img src="assets/kernelsu_next.png" style="width: 96px;" alt="logo">
 
 A Kernel-based root solution for Android devices.
 
