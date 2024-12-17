@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="confirm">Confirm</string>
     <string name="app_name" translatable="false">KernelSU Next</string>
     <string name="home">Home</string>
     <string name="home_not_installed">Not installed</string>
@@ -23,6 +24,8 @@
     <string name="module_failed_to_disable">Failed to disable module: %s</string>
     <string name="module_empty">No module installed</string>
     <string name="module">Module</string>
+    <string name="confirm_module_installation">Confirm Installation</string>
+    <string name="module_install_prompt_with_name">Do you want to continue installing this module?\nModule: %1$s</string>
     <string name="uninstall">Uninstall</string>
     <string name="module_install">Install</string>
     <string name="install">Install</string>
