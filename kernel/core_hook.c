@@ -450,14 +450,12 @@ static bool should_umount(struct path *path)
 	return false;
 }
 
-static int ksu_umount_mnt(struct path *path, int flags)
+static void ksu_umount_mnt(struct path *path, int flags)
 {
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 9, 0) || defined(KSU_UMOUNT)
-	return path_umount(path, flags);
-#else
-	// TODO: umount for non GKI kernel
-	return -ENOSYS;
-#endif
+	int err = path_umount(path, flags);
+	if (err) {
+		pr_info("umount %s failed: %d\n", path->dentry->d_iname, err);
+	}
 }
 
 static void try_umount(const char *mnt, bool check_mnt, int flags)
@@ -477,11 +475,13 @@ static void try_umount(const char *mnt, bool check_mnt, int flags)
 	if (check_mnt && !should_umount(&path)) {
 		return;
 	}
-
-	err = ksu_umount_mnt(&path, flags);
-	if (err) {
-		pr_warn("umount %s failed: %d\n", mnt, err);
-	}
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 9, 0) || defined(KSU_UMOUNT)
+	ksu_umount_mnt(&path, flags);
+#else
+	#error You should backport path_umount to fs/namespace.c !
+	#error Read: https://kernelsu.org/guide/how-to-integrate-for-non-gki.html#how-to-backport-path-umount
+	#error Read: https://github.com/tiann/KernelSU/pull/1464
+#endif
 }
 
 int ksu_handle_setuid(struct cred *new, const struct cred *old)
