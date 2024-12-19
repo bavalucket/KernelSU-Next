@@ -180,6 +180,9 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
                     TextButton(onClick = {
                         showConfirmDialog = false
                         navigator.navigate(FlashScreenDestination(FlashIt.FlashModule(zipUri!!)))
+
+                        viewModel.markNeedRefresh()
+
                     }) {
                         Text(stringResource(R.string.confirm))
                     }
