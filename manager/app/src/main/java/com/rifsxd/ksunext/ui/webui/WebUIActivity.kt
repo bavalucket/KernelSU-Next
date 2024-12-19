@@ -52,7 +52,7 @@ class WebUIActivity : ComponentActivity() {
         val webRoot = File("${moduleDir}/webroot")
         val rootShell = createRootShell(true).also { this.rootShell = it }
         val webViewAssetLoader = WebViewAssetLoader.Builder()
-            .setDomain("mui.kernelsu.org")
+            .setDomain("mui.kernelsu-next.org")
             .addPathHandler(
                 "/",
                 SuFilePathHandler(this, webRoot, rootShell)
@@ -85,7 +85,7 @@ class WebUIActivity : ComponentActivity() {
             webviewInterface = WebViewInterface(this@WebUIActivity, this, moduleDir)
             addJavascriptInterface(webviewInterface, "ksu")
             setWebViewClient(webViewClient)
-            loadUrl("https://mui.kernelsu.org/index.html")
+            loadUrl("https://mui.kernelsu-next.org/index.html")
         }
 
         setContentView(webView)
