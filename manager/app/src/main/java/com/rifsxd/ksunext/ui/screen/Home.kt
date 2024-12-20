@@ -70,13 +70,6 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             val isManager = Natives.becomeManager(ksuApp.packageName)
-            SideEffect {
-                if (isManager) {
-                    Handler(Looper.getMainLooper()).postDelayed({
-                        install()
-                    }, 2000)
-                }
-            }
             val ksuVersion = if (isManager) Natives.version else null
             val lkmMode = ksuVersion?.let {
                 if (it >= Natives.MINIMAL_SUPPORTED_KERNEL_LKM && kernelVersion.isGKI()) Natives.isLkmMode else null

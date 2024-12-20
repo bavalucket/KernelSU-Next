@@ -45,6 +45,7 @@ import com.rifsxd.ksunext.ui.screen.BottomBarDestination
 import com.rifsxd.ksunext.ui.theme.KernelSUTheme
 import com.rifsxd.ksunext.ui.util.LocalSnackbarHost
 import com.rifsxd.ksunext.ui.util.rootAvailable
+import com.rifsxd.ksunext.ui.util.install
 
 class MainActivity : ComponentActivity() {
 
@@ -57,6 +58,9 @@ class MainActivity : ComponentActivity() {
         }
 
         super.onCreate(savedInstanceState)
+
+        val isManager = Natives.becomeManager(ksuApp.packageName)
+	    if (isManager) install()
 
         setContent {
             KernelSUTheme {
