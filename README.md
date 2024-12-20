@@ -1,3 +1,5 @@
+**English** | [简体中文](README_CN.md)
+
 # KernelSU Next
 
 <img src="assets/kernelsu_next.png" style="width: 96px;" alt="logo">
