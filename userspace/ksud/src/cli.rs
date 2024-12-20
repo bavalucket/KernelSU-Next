@@ -10,7 +10,7 @@ use log::LevelFilter;
 use crate::defs::KSUD_VERBOSE_LOG_FILE;
 use crate::{apk_sign, assets, debug, defs, init_event, ksucalls, module, utils};
 
-/// KernelSU userspace cli
+/// KernelSU-Next userspace cli
 #[derive(Parser, Debug)]
 #[command(author, version = defs::VERSION_NAME, about, long_about = None)]
 struct Args {
@@ -23,7 +23,7 @@ struct Args {
 
 #[derive(clap::Subcommand, Debug)]
 enum Commands {
-    /// Manage KernelSU modules
+    /// Manage KernelSU-Next modules
     Module {
         #[command(subcommand)]
         command: Module,
@@ -38,13 +38,13 @@ enum Commands {
     /// Trigger `boot-complete` event
     BootCompleted,
 
-    /// Install KernelSU userspace component to system
+    /// Install KernelSU-Next userspace component to system
     Install {
         #[arg(long, default_value = None)]
         magiskboot: Option<PathBuf>,
     },
 
-    /// Uninstall KernelSU modules and itself(LKM Only)
+    /// Uninstall KernelSU-Next modules and itself(LKM Only)
     Uninstall {
         /// magiskboot path, if not specified, will search from $PATH
         #[arg(long, default_value = None)]
@@ -63,7 +63,7 @@ enum Commands {
         command: Profile,
     },
 
-    /// Patch boot or init_boot images to apply KernelSU
+    /// Patch boot or init_boot images to apply KernelSU-Next
     BootPatch {
         /// boot image path, if not specified, will try to find the boot image automatically
         #[arg(short, long)]
@@ -102,7 +102,7 @@ enum Commands {
         kmi: Option<String>,
     },
 
-    /// Restore boot or init_boot images patched by KernelSU
+    /// Restore boot or init_boot images patched by KernelSU-Next
     BootRestore {
         /// boot image path, if not specified, will try to find the boot image automatically
         #[arg(short, long)]
@@ -277,7 +277,7 @@ pub fn run() -> Result<()> {
     android_logger::init_once(
         Config::default()
             .with_max_level(LevelFilter::Trace) // limit log level
-            .with_tag("KernelSU"), // logs will show under mytag tag
+            .with_tag("KernelSU-Next"), // logs will show under mytag tag
     );
 
     #[cfg(not(target_os = "android"))]
