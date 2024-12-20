@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -104,7 +105,8 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             }
             NextCard()
             InfoCard()
-            EXperimentalCard()
+            IssueReportCard()
+            //EXperimentalCard()
             Spacer(Modifier)
         }
     }
@@ -299,7 +301,7 @@ private fun StatusCard(
                         )
                         Spacer(Modifier.height(4.dp))
                         Text(
-                            text = stringResource(R.string.home_failure_reason),
+                            text = stringResource(R.string.home_failure_tip),
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
@@ -470,6 +472,53 @@ fun EXperimentalCard() {
                     text = stringResource(R.string.home_experimental_kernelsu_body_point_3),
                     style = MaterialTheme.typography.bodyMedium
                 )
+            }
+        }
+    }
+}
+
+@Composable
+fun IssueReportCard() {
+    val uriHandler = LocalUriHandler.current
+    val githubIssueUrl = stringResource(R.string.issue_report_github_link)
+    val telegramUrl = stringResource(R.string.issue_report_telegram_link)
+
+    ElevatedCard {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(24.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.issue_report_title),
+                    style = MaterialTheme.typography.titleSmall
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.issue_report_body),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.issue_report_body_2),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+            }
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                IconButton(onClick = { uriHandler.openUri(githubIssueUrl) }) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_github),
+                        contentDescription = stringResource(R.string.issue_report_github),
+                    )
+                }
+                IconButton(onClick = { uriHandler.openUri(telegramUrl) }) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_telegram),
+                        contentDescription = stringResource(R.string.issue_report_telegram),
+                    )
+                }
             }
         }
     }
