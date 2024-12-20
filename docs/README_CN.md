@@ -2,7 +2,7 @@
 
 # KernelSU Next
 
-<img src="assets/kernelsu_next.png" style="width: 96px;" alt="logo">
+<img src="/assets/kernelsu_next.png" style="width: 96px;" alt="logo">
 
 安卓基于内核的 Root 方案
 
