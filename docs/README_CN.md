@@ -9,7 +9,7 @@
 [![Latest release](https://img.shields.io/github/v/release/rifsxd/KernelSU-Next?label=Release&logo=github)](https://github.com/rifsxd/KernelSU-Next/releases/latest)
 [![Nightly Release](https://img.shields.io/badge/Nightly%20release-gray?logo=hackthebox&logoColor=fff)](https://nightly.link/rifsxd/KernelSU-Next/workflows/build-manager/next/manager)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-orange.svg?logo=gnu)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-[![GitHub License](https://img.shields.io/github/license/tiann/KernelSU?logo=gnu)](/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/rifsxd/KernelSU-Next?logo=gnu)](/LICENSE)
 
 ## 特性
 
@@ -25,12 +25,6 @@ KernelSU Next 支持从 4.14 到 6.6 的大多数安卓内核
  - EOL (<4.19) 内核也需要使用 KernelSU 内核驱动重新编译 (3.18 以上内核为试验版本）
 
 目前只支持 `arm64-v8a` 架构
-
-## 使用方法
-
-- [安装教程](https://kernelsu.org/guide/installation.html)
-- [如何构建？](https://kernelsu.org/guide/how-to-build.html)
-- [官方网站](https://kernelsu.org/)
 
 ## 安全性
 

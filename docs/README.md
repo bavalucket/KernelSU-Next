@@ -6,10 +6,10 @@
 
 A Kernel-based root solution for Android devices.
 
-[![Latest release](https://img.shields.io/github/v/release/rifsxd/KernelSU?label=Release&logo=github)](https://github.com/rifsxd/KernelSU/releases/latest)
-[![Nightly Release](https://img.shields.io/badge/Nightly%20release-gray?logo=hackthebox&logoColor=fff)](https://nightly.link/rifsxd/KernelSU/workflows/build-manager/next/manager)
+[![Latest release](https://img.shields.io/github/v/release/rifsxd/KernelSU-Next?label=Release&logo=github)](https://github.com/rifsxd/KernelSU-Next/releases/latest)
+[![Nightly Release](https://img.shields.io/badge/Nightly%20release-gray?logo=hackthebox&logoColor=fff)](https://nightly.link/rifsxd/KernelSU-Next/workflows/build-manager/next/manager)
 [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-orange.svg?logo=gnu)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-[![GitHub License](https://img.shields.io/github/license/tiann/KernelSU?logo=gnu)](/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/rifsxd/KernelSU-Next?logo=gnu)](/LICENSE)
 
 ## Features
 
@@ -25,12 +25,6 @@ KernelSU Next officially supports most Android kernels starting from 4.14 upto 6
  - EOL (<4.19) kernels also need to be rebuilt with KernelSU driver. (3.18+ is experimental)
 
 Currently, only `arm64-v8a` is supported.
-
-## Usage
-
-- [Installation Instruction](https://kernelsu.org/guide/installation.html)
-- [How to build?](https://kernelsu.org/guide/how-to-build.html)
-- [Official Website](https://kernelsu.org/)
 
 ## Security
 
