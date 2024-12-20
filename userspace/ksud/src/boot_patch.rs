@@ -212,7 +212,7 @@ pub fn restore(
     flash: bool,
 ) -> Result<()> {
     let tmpdir = tempfile::Builder::new()
-        .prefix("KernelSU")
+        .prefix("KernelSU-Next")
         .tempdir()
         .context("create temp dir failed")?;
     let workdir = tmpdir.path();
@@ -235,7 +235,7 @@ pub fn restore(
     ensure!(status.success(), "magiskboot unpack failed");
 
     let is_kernelsu_patched = is_kernelsu_patched(&magiskboot, workdir)?;
-    ensure!(is_kernelsu_patched, "boot image is not patched by KernelSU");
+    ensure!(is_kernelsu_patched, "boot image is not patched by KernelSU-Next");
 
     let mut new_boot = None;
     let mut from_backup = false;
@@ -370,7 +370,7 @@ fn do_patch(
     }
 
     let tmpdir = tempfile::Builder::new()
-        .prefix("KernelSU")
+        .prefix("KernelSU-Next")
         .tempdir()
         .context("create temp dir failed")?;
     let workdir = tmpdir.path();
@@ -460,7 +460,7 @@ fn do_patch(
         "Cannot work with Magisk patched image"
     );
 
-    println!("- Adding KernelSU LKM");
+    println!("- Adding KernelSU-Next LKM");
     let is_kernelsu_patched = is_kernelsu_patched(&magiskboot, workdir)?;
 
     let mut need_backup = false;
