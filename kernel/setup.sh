@@ -6,9 +6,9 @@ GKI_ROOT=$(pwd)
 display_usage() {
     echo "Usage: $0 [--cleanup | <commit-or-tag>]"
     echo "  --cleanup:              Cleans up previous modifications made by the script."
-    echo "  <commit-or-tag>:        Sets up or updates the KernelSU to specified tag or commit."
+    echo "  <commit-or-tag>:        Sets up or updates the KernelSU-Next to specified tag or commit."
     echo "  -h, --help:             Displays this usage information."
-    echo "  (no args):              Sets up or updates the KernelSU environment to the latest tagged version."
+    echo "  (no args):              Sets up or updates the KernelSU-Next environment to the latest tagged version."
 }
 
 initialize_variables() {
