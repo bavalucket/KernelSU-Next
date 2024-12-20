@@ -701,12 +701,14 @@ fun ModuleItem(
                             imageVector = Icons.Outlined.Restore,
                             contentDescription = null
                         )
-                        Text(
-                            modifier = Modifier.padding(start = 7.dp),
-                            fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
-                            fontSize = MaterialTheme.typography.labelMedium.fontSize,
-                            text = stringResource(R.string.restore)
-                        )
+                        if (!module.hasActionScript && !module.hasWebUi && updateUrl.isEmpty()) {
+                            Text(
+                                modifier = Modifier.padding(start = 7.dp),
+                                fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
+                                fontSize = MaterialTheme.typography.labelMedium.fontSize,
+                                text = stringResource(R.string.restore)
+                            )
+                        }
                     }
                 } else {
                     FilledTonalButton(
@@ -720,12 +722,14 @@ fun ModuleItem(
                             imageVector = Icons.Outlined.Delete,
                             contentDescription = null
                         )
-                        Text(
-                            modifier = Modifier.padding(start = 7.dp),
-                            fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
-                            fontSize = MaterialTheme.typography.labelMedium.fontSize,
-                            text = stringResource(R.string.uninstall)
-                        )
+                        if (!module.hasActionScript && !module.hasWebUi && updateUrl.isEmpty()) {  
+                            Text(
+                                modifier = Modifier.padding(start = 7.dp),
+                                fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
+                                fontSize = MaterialTheme.typography.labelMedium.fontSize,
+                                text = stringResource(R.string.uninstall)
+                            )
+		                }
                     }
                 }
             }
