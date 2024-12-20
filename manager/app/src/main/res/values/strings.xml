@@ -77,10 +77,10 @@
     <string name="profile_selinux_context">SELinux context</string>
     <string name="profile_umount_modules">Umount modules</string>
     <string name="failed_to_update_app_profile">Failed to update App Profile for %s</string>
-    <string name="require_kernel_version">The current KernelSU version %d is too low for the manager to work properly. Please upgrade to version %d or higher!</string>
+    <string name="require_kernel_version">The current KernelSU-Next version %d is too low for the manager to work properly. Please upgrade to version %d or higher!</string>
     <string name="settings_umount_modules_default">Umount modules by default</string>
     <string name="settings_umount_modules_default_summary">The global default value for \"Umount modules\" in App Profile. If enabled, it will remove all module modifications to the system for apps that don\'t have a profile set.</string>
-    <string name="profile_umount_modules_summary">Enabling this option will allow KernelSU to restore any modified files by the modules for this app.</string>
+    <string name="profile_umount_modules_summary">Enabling this option will allow KernelSU-Next to restore any modified files by the modules for this app.</string>
     <string name="profile_selinux_domain">Domain</string>
     <string name="profile_selinux_rules">Rules</string>
     <string name="module_update">Update</string>
@@ -134,9 +134,9 @@
     <string name="settings_uninstall_temporary">Uninstall temporarily</string>
     <string name="settings_uninstall_permanent">Uninstall permanently</string>
     <string name="settings_restore_stock_image">Restore stock image</string>
-    <string name="settings_uninstall_temporary_message">Temporarily uninstall KernelSU, restore to original state after next reboot.</string>
-    <string name="settings_uninstall_permanent_message">Uninstalling KernelSU (Root and all modules) completely and permanently.</string>
-    <string name="settings_restore_stock_image_message">Restore the stock factory image (If a backup exists), usually used before OTA; if you need to uninstall KernelSU, please use \"Uninstall permanently\".</string>
+    <string name="settings_uninstall_temporary_message">Temporarily uninstall KernelSU-Next, restore to original state after next reboot.</string>
+    <string name="settings_uninstall_permanent_message">Uninstalling KernelSU-Next (Root and all modules) completely and permanently.</string>
+    <string name="settings_restore_stock_image_message">Restore the stock factory image (If a backup exists), usually used before OTA; if you need to uninstall KernelSU-Next, please use \"Uninstall permanently\".</string>
     <string name="flashing">Flashing</string>
     <string name="flash_success">Flash success</string>
     <string name="flash_failed">Flash failed</string>
