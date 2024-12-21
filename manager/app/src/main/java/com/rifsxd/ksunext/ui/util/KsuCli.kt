@@ -120,6 +120,28 @@ fun getModuleCount(): Int {
     }.getOrElse { return 0 }
 }
 
+fun getSuSFS(): String {
+    val shell = getRootShell()
+    val result = ShellUtils.fastCmd(shell, "dmesg | grep -i susfs")
+
+    return if (result.isNotBlank()) {
+        "Supported"
+    } else {
+        "Unsupported"
+    }
+}
+
+fun getSuSFSVersion(): String {
+    val shell = getRootShell()
+    val result = ShellUtils.fastCmd(shell, "su -c ksu_susfs show version")
+
+    return if (result.startsWith("v")) {
+        result
+    } else {
+        "Unavailable"
+    }
+}
+
 fun getSuperuserCount(): Int {
     return Natives.allowList.size
 }
