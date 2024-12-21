@@ -96,7 +96,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             if (checkUpdate) {
                 UpdateCard()
             }
-            NextCard()
+            //NextCard()
             InfoCard()
             IssueReportCard()
             //EXperimentalCard()
