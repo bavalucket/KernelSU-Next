@@ -372,15 +372,16 @@ private fun InfoCard() {
             }
 
 
-            InfoCardItem(stringResource(R.string.home_kernel),
-                uname.release,
+            InfoCardItem(
+                label = stringResource(R.string.home_kernel),
+                content = uname.release,
                 icon = Icons.Filled.Memory,
             )
 
             Spacer(Modifier.height(16.dp))
             InfoCardItem(
-                stringResource(R.string.home_android),
-                "${Build.VERSION.RELEASE} (${Build.VERSION.SDK_INT})",
+                label = stringResource(R.string.home_android),
+                content = "${Build.VERSION.RELEASE} (${Build.VERSION.SDK_INT})",
                 icon = Icons.Filled.Android,
 
             )
@@ -388,8 +389,8 @@ private fun InfoCard() {
             Spacer(Modifier.height(16.dp))
             val managerVersion = getManagerVersion(context)
             InfoCardItem(
-                stringResource(R.string.home_manager_version),
-                "${managerVersion.first}-next (${managerVersion.second})",
+                label = stringResource(R.string.home_manager_version),
+                content = "${managerVersion.first}-next (${managerVersion.second})",
                 icon = Icons.AutoMirrored.Filled.Article,
             )
 
@@ -405,7 +406,7 @@ private fun InfoCard() {
             if (suSFS != "Unsupported") {
                 InfoCardItem(
                     label = stringResource(R.string.home_susfs_version),
-                    content = getSuSFSVersion(),
+                    content = "${getSuSFSVersion()} (${getSuSFSVariant()})",
                     icon = Icons.Filled.SettingsSuggest,
                 )
             }

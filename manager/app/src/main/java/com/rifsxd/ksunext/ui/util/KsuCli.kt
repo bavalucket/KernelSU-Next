@@ -127,14 +127,18 @@ private fun getSuSFSPath(): String {
 fun getSuSFS(): String {
     val shell = getRootShell()
     val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} support")
-
     return result
 }
 
 fun getSuSFSVersion(): String {
     val shell = getRootShell()
     val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} version")
+    return result
+}
 
+fun getSuSFSVariant(): String {
+    val shell = getRootShell()
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} variant")
     return result
 }
 
