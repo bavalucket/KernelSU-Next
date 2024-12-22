@@ -406,7 +406,7 @@ private fun InfoCard() {
             if (suSFS != "Unsupported") {
                 InfoCardItem(
                     label = stringResource(R.string.home_susfs_version),
-                    content = "${getSuSFSVersion()} (${getSuSFSVariant()})",
+                    content = "${getSuSFSVersion()} (${getSuSFSVariant()}) [+] sus_su mode: ${susfsSUSSU_Mode()}",
                     icon = Icons.Filled.SettingsSuggest,
                 )
             }
