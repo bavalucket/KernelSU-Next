@@ -268,14 +268,10 @@ private fun StatusCard(
                             style = MaterialTheme.typography.bodyMedium
                         )
                         Spacer(Modifier.height(4.dp))
-
-                        val suSFS = getSuSFS()
-                        if (suSFS != "Unsupported") {
-                            Text(
-                                text = stringResource(R.string.home_susfs, suSFS),
-                                style = MaterialTheme.typography.bodyMedium
-                            )
-                        }
+                        Text(
+                            text = stringResource(R.string.home_susfs, getSuSFS()),
+                            style = MaterialTheme.typography.bodyMedium
+                        )
                         
                     }
                 }
@@ -405,7 +401,6 @@ private fun InfoCard() {
             )
             
             Spacer(Modifier.height(16.dp))
-
             val suSFS = getSuSFS()
             if (suSFS != "Unsupported") {
                 InfoCardItem(
@@ -414,7 +409,6 @@ private fun InfoCard() {
                     icon = Icons.Filled.SettingsSuggest,
                 )
             }
-            
         }
     }
 }

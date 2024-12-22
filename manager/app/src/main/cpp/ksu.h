@@ -7,10 +7,6 @@
 
 #include <linux/capability.h>
 
-#define KERNEL_SU_OPTION 0xDEADBEEF
-
-#define CMD_SUSFS_SHOW_VERSION 0x555e1
-
 bool become_manager(const char *);
 
 int get_version();

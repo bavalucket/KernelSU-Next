@@ -120,28 +120,22 @@ fun getModuleCount(): Int {
     }.getOrElse { return 0 }
 }
 
-// TODO: Try fixing Prctl method to get CMD_SUSFS_SHOW_VERSION 0x555e1
-fun getSuSFS(): String {
-    return try {
-        val sus_version = Natives.getSusfsVersion()
-        if (sus_version.startsWith("v")) {
-            "Supported"
-        } else {
-            "Unsupported"
-        }
-    } catch (e: Exception) {
-        "Error: ${e.message}"
-    }
+private fun getSuSFSPath(): String {
+    return ksuApp.applicationInfo.nativeLibraryDir + File.separator + "libsusfs.so"
 }
 
-// TODO: Try fixing Prctl method to get CMD_SUSFS_SHOW_VERSION 0x555e1
+fun getSuSFS(): String {
+    val shell = getRootShell()
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} support")
+
+    return result
+}
+
 fun getSuSFSVersion(): String {
-    return try {
-        val sus_version = Natives.getSusfsVersion()
-        sus_version ?: "Unknown version"
-    } catch (e: Exception) {
-        "Error: ${e.message}"
-    }
+    val shell = getRootShell()
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} version")
+
+    return result
 }
 
 fun getSuperuserCount(): Int {

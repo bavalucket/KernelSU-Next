@@ -30,8 +30,6 @@ object Natives {
         System.loadLibrary("kernelsu")
     }
 
-    external fun getSusfsVersion(): String
-
     // become root manager, return true if success.
     external fun becomeManager(pkg: String?): Boolean
     val version: Int
