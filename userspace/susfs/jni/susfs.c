@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
         if (!error) {
             printf("%s\n", version);
         } else {
-            fprintf(stderr, "Failed to retrieve version\n");
+            printf("Unsupported\n");
         }
     }
     // If 'support' is given, check if version starts with 'v'
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
                 printf("Unsupported\n");
             }
         } else {
-            fprintf(stderr, "Failed to retrieve version\n");
+            printf("Unsupported\n");
         }
     } else {
         fprintf(stderr, "Invalid argument: %s\n", argv[1]);
