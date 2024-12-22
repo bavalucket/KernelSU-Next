@@ -10,6 +10,23 @@
 #define LOG_TAG "KernelSU-Next"
 #define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG, LOG_TAG, __VA_ARGS__)
 
+// TODO: Try fixing Prctl method to get CMD_SUSFS_SHOW_VERSION 0x555e1
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_rifsxd_ksunext_Natives_getSusfsVersion(JNIEnv *env, jobject) {
+    int error = -1;
+    char susfsVersion[16];
+    
+    error = prctl(KERNEL_SU_OPTION, CMD_SUSFS_SHOW_VERSION, susfsVersion, NULL, &error);
+    if (!error) {
+        return env->NewStringUTF(susfsVersion);
+        LOGD("susfs: found");
+    } else {
+        LOGD("susfs: not foung");
+        return env->NewStringUTF("Error fetching version");
+    }
+}
+
 extern "C"
 JNIEXPORT jboolean JNICALL
 Java_com_rifsxd_ksunext_Natives_becomeManager(JNIEnv *env, jobject, jstring pkg) {

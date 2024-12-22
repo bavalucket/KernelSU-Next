@@ -120,25 +120,27 @@ fun getModuleCount(): Int {
     }.getOrElse { return 0 }
 }
 
+// TODO: Try fixing Prctl method to get CMD_SUSFS_SHOW_VERSION 0x555e1
 fun getSuSFS(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "dmesg | grep -i susfs")
-
-    return if (result.isNotBlank()) {
-        "Supported"
-    } else {
-        "Unsupported"
+    return try {
+        val sus_version = Natives.getSusfsVersion()
+        if (sus_version.startsWith("v")) {
+            "Supported"
+        } else {
+            "Unsupported"
+        }
+    } catch (e: Exception) {
+        "Error: ${e.message}"
     }
 }
 
+// TODO: Try fixing Prctl method to get CMD_SUSFS_SHOW_VERSION 0x555e1
 fun getSuSFSVersion(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "su -c ksu_susfs show version")
-
-    return if (result.startsWith("v")) {
-        result
-    } else {
-        "Unavailable"
+    return try {
+        val sus_version = Natives.getSusfsVersion()
+        sus_version ?: "Unknown version"
+    } catch (e: Exception) {
+        "Error: ${e.message}"
     }
 }
 

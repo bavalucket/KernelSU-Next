@@ -10,8 +10,6 @@
 
 #include "ksu.h"
 
-#define KERNEL_SU_OPTION 0xDEADBEEF
-
 #define CMD_GRANT_ROOT 0
 
 #define CMD_BECOME_MANAGER 1
