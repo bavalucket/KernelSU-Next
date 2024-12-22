@@ -402,7 +402,7 @@ private fun InfoCard() {
             )
             
             Spacer(Modifier.height(16.dp))
-            val suSFS = getSuSFSVersion()
+            val suSFS = getSuSFS()
             if (suSFS != "Unsupported") {
                 InfoCardItem(
                     label = stringResource(R.string.home_susfs_version),
