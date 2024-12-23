@@ -16,7 +16,7 @@ on:
         type: string
         default: ubuntu-latest
 jobs:
-  build-su:
+  build-susfs:
     name: Build userspace susfs
     runs-on: ubuntu-latest
     steps:
@@ -29,12 +29,6 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: susfs
+        name: susfs-aarch64-linux-android
         path: ./userspace/susfs/libs
-    
-    - name: Upload susfs artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: susfs-${{ inputs.target }}
-        path: userspace/susfs/libs/**/susfs
     
