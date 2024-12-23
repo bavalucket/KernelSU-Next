@@ -157,6 +157,32 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 }
             }
 
+            val isSUS_SU = getSuSFSFeatures()
+            if (isSUS_SU == "CONFIG_KSU_SUSFS_SUS_SU") {
+                var isEnabled by rememberSaveable {
+                    mutableStateOf(susfsSUS_SU_Mode() == "2")
+                }
+
+                LaunchedEffect(Unit) {
+                    isEnabled = susfsSUS_SU_Mode() == "2"
+                }
+
+                SwitchItem(
+                    icon = Icons.Filled.VisibilityOff,
+                    title = stringResource(id = R.string.settings_susfs_toggle),
+                    summary = stringResource(id = R.string.settings_susfs_toggle_summary),
+                    checked = isEnabled
+                ) {
+                    if (it) {
+                        susfsSUS_SU_2()
+                    } else {
+                        susfsSUS_SU_0()
+                    }
+                    prefs.edit().putBoolean("enable_sus_su", it).apply()
+                    isEnabled = it
+                }
+            }
+
             val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
             var checkUpdate by rememberSaveable {
                 mutableStateOf(
@@ -186,32 +212,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             ) {
                 prefs.edit().putBoolean("enable_web_debugging", it).apply()
                 enableWebDebugging = it
-            }
-            
-            val isSUS_SU = getSuSFSFeatures()
-            if (isSUS_SU == "CONFIG_KSU_SUSFS_SUS_SU") {
-                var isEnabled by rememberSaveable {
-                    mutableStateOf(susfsSUS_SU_Mode() == "2")
-                }
-
-                LaunchedEffect(Unit) {
-                    isEnabled = susfsSUS_SU_Mode() == "2"
-                }
-
-                SwitchItem(
-                    icon = Icons.Filled.VisibilityOff,
-                    title = stringResource(id = R.string.settings_susfs_toggle),
-                    summary = stringResource(id = R.string.settings_susfs_toggle_summary),
-                    checked = isEnabled
-                ) {
-                    if (it) {
-                        susfsSUS_SU_2()
-                    } else {
-                        susfsSUS_SU_0()
-                    }
-                    prefs.edit().putBoolean("enable_sus_su", it).apply()
-                    isEnabled = it
-                }
             }
 
             var showBottomsheet by remember { mutableStateOf(false) }
