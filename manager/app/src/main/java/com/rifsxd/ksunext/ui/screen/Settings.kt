@@ -157,6 +157,8 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 }
             }
 
+            val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+
             val isSUS_SU = getSuSFSFeatures()
             if (isSUS_SU == "CONFIG_KSU_SUSFS_SUS_SU") {
                 var isEnabled by rememberSaveable {
@@ -183,7 +185,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 }
             }
 
-            val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
             var checkUpdate by rememberSaveable {
                 mutableStateOf(
                     prefs.getBoolean("check_update", true)
