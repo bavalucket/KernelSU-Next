@@ -23,7 +23,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - name: Build su
+    - name: Build susfs
       working-directory: ./userspace/susfs
       run: $ANDROID_NDK/ndk-build
     - name: Upload a Build Artifact
@@ -32,9 +32,9 @@ jobs:
         name: susfs
         path: ./userspace/susfs/libs
     
-    - name: Upload ksud artifact
+    - name: Upload susfs artifact
       uses: actions/upload-artifact@v4
       with:
         name: susfs-${{ inputs.target }}
-        path: userspace/susfs/libs/**/susfs*
+        path: userspace/susfs/libs/**/susfs
     
