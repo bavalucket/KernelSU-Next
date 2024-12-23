@@ -21,6 +21,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
@@ -346,15 +347,21 @@ private fun InfoCard() {
             val uname = Os.uname()
 
             @Composable
-            fun InfoCardItem(label: String, content: String, icon: ImageVector? = null) {
+            fun InfoCardItem(label: String, content: String, icon: Any? = null) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     if (icon != null) {
-                        Icon(
-                            imageVector = icon,
-                            contentDescription = null,
-                            modifier = Modifier
-                                .padding(end = 20.dp)
-                        )
+                        when (icon) {
+                            is ImageVector -> Icon(
+                                imageVector = icon,
+                                contentDescription = null,
+                                modifier = Modifier.padding(end = 20.dp)
+                            )
+                            is Painter -> Icon(
+                                painter = icon,
+                                contentDescription = null,
+                                modifier = Modifier.padding(end = 20.dp)
+                            )
+                        }
                     }
                     Column {
                         Text(
@@ -375,7 +382,7 @@ private fun InfoCard() {
             InfoCardItem(
                 label = stringResource(R.string.home_kernel),
                 content = uname.release,
-                icon = Icons.Filled.Memory,
+                icon = painterResource(R.drawable.ic_linux),
             )
 
             Spacer(Modifier.height(16.dp))
@@ -391,7 +398,7 @@ private fun InfoCard() {
             InfoCardItem(
                 label = stringResource(R.string.home_manager_version),
                 content = "${managerVersion.first}-next (${managerVersion.second})",
-                icon = Icons.AutoMirrored.Filled.Article,
+                icon = painterResource(R.drawable.ic_ksu_next),
             )
 
             Spacer(Modifier.height(16.dp))
@@ -402,12 +409,15 @@ private fun InfoCard() {
             )
             
             Spacer(Modifier.height(16.dp))
+            val isSUS_SU = getSuSFSFeatures() == "CONFIG_KSU_SUSFS_SUS_SU"
             val suSFS = getSuSFS()
-            if (suSFS != "Unsupported") {
+
+            if (suSFS == "Supported") {
+                val susSUMode = if (isSUS_SU) "sus su mode: ${susfsSUS_SU_Mode()}" else ""
                 InfoCardItem(
                     label = stringResource(R.string.home_susfs_version),
-                    content = "${getSuSFSVersion()} (${getSuSFSVariant()}) [+] sus_su mode: ${susfsSUSSU_Mode()}",
-                    icon = Icons.Filled.SettingsSuggest,
+                    content = "${getSuSFSVersion()} (${getSuSFSVariant()}) | $susSUMode",
+                    icon = painterResource(R.drawable.ic_sus),
                 )
             }
         }

@@ -141,22 +141,27 @@ fun getSuSFSVariant(): String {
     val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} variant")
     return result
 }
+fun getSuSFSFeatures(): String {
+    val shell = getRootShell()
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} features")
+    return result
+}
 
-fun susfsSUSSU_0(): String {
+fun susfsSUS_SU_0(): String {
     val shell = getRootShell()
     val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} sus_su 0")
     return result
 }
 
-fun susfsSUSSU_1(): String {
+fun susfsSUS_SU_2(): String {
     val shell = getRootShell()
     val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} sus_su 2")
     return result
 }
 
-fun susfsSUSSU_Mode(): String {
+fun susfsSUS_SU_Mode(): String {
     val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} sus_su show_working_mode")
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} sus_su mode")
     return result
 }
 
@@ -444,7 +449,7 @@ fun getAppProfileTemplate(id: String): String {
 fun setAppProfileTemplate(id: String, template: String): Boolean {
     val shell = getRootShell()
     val escapedTemplate = template.replace("\"", "\\\"")
-    val cmd = """${getKsuDaemonPath()} profile set-template "$id" "$escapedTemplate"""""
+    val cmd = """${getKsuDaemonPath()} profile set-template "$id" "$escapedTemplate'""""
     return shell.newJob().add(cmd)
         .to(ArrayList(), null).exec().isSuccess
 }

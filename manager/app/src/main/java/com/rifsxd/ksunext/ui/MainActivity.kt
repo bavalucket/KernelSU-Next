@@ -65,11 +65,11 @@ class MainActivity : ComponentActivity() {
 
         val prefs = getSharedPreferences("settings", MODE_PRIVATE)
 
-        val suSFSVar = getSuSFSVariant()
-        if (suSFSVar != "NON-GKI") {
-            if (prefs.getBoolean("enable_susfs", false)) {
-                if (susfsSUSSU_Mode() != "2") {
-                    susfsSUSSU_1()
+        val isSUS_SU = getSuSFSFeatures()
+        if (isSUS_SU == "CONFIG_KSU_SUSFS_SUS_SU") {
+            if (prefs.getBoolean("enable_sus_su", false)) {
+                if (susfsSUS_SU_Mode() != "2") {
+                    susfsSUS_SU_2()
                 }
             }
         }
@@ -139,7 +139,7 @@ private fun BottomBar(navController: NavHostController) {
                     }
                 },
                 label = { Text(stringResource(destination.label)) },
-                alwaysShowLabel = false
+                alwaysShowLabel = true
             )
         }
     }

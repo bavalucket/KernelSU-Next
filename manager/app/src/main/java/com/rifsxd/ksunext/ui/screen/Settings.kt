@@ -34,6 +34,7 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -187,11 +188,16 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 enableWebDebugging = it
             }
             
-            val suSFSVar = getSuSFSVariant()
-            if (suSFSVar != "NON-GKI") {
+            val isSUS_SU = getSuSFSFeatures()
+            if (isSUS_SU == "CONFIG_KSU_SUSFS_SUS_SU") {
                 var isEnabled by rememberSaveable {
-                    mutableStateOf(prefs.getBoolean("enable_susfs", susfsSUSSU_Mode() == "2"))
+                    mutableStateOf(susfsSUS_SU_Mode() == "2")
                 }
+
+                LaunchedEffect(Unit) {
+                    isEnabled = susfsSUS_SU_Mode() == "2"
+                }
+
                 SwitchItem(
                     icon = Icons.Filled.VisibilityOff,
                     title = stringResource(id = R.string.settings_susfs_toggle),
@@ -199,11 +205,11 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     checked = isEnabled
                 ) {
                     if (it) {
-                        susfsSUSSU_1()
+                        susfsSUS_SU_2()
                     } else {
-                        susfsSUSSU_0()
+                        susfsSUS_SU_0()
                     }
-                    prefs.edit().putBoolean("enable_susfs", it).apply()
+                    prefs.edit().putBoolean("enable_sus_su", it).apply()
                     isEnabled = it
                 }
             }
