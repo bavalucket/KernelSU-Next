@@ -1,0 +1,40 @@
+name: Build SuSFS
+on:
+  push:
+    branches: [ "next" ]
+    paths:
+      - '.github/workflows/build-susfs.yml'
+      - 'userspace/susfs/**'
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      target:
+        required: true
+        type: string
+      os:
+        required: false
+        type: string
+        default: ubuntu-latest
+jobs:
+  build-su:
+    name: Build userspace susfs
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Build su
+      working-directory: ./userspace/susfs
+      run: $ANDROID_NDK/ndk-build
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: susfs
+        path: ./userspace/susfs/libs
+    
+    - name: Upload ksud artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: susfs-${{ inputs.target }}
+        path: userspace/susfs/libs/**/susfs*
+    
