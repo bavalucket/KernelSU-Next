@@ -14,7 +14,7 @@ A Kernel-based root solution for Android devices.
 ## Features
 
 1. Kernel-based `su` and root access management.
-2. Module system based on [Magic Mount](https://github.com/topjohnwu/Magisk/blob/c512496847d182526f2043295ecfd275398eccac/docs/releases/26100.md#new-magic-mount-implementation).
+2. Module system based on [OverlayFS](https://en.wikipedia.org/wiki/OverlayFS).
 3. [App Profile](https://kernelsu.org/guide/app-profile.html): Lock up the root power in a cage.
 
 ## Compatibility State
@@ -42,4 +42,3 @@ For information on reporting security vulnerabilities in KernelSU, see [SECURITY
 - [genuine](https://github.com/brevent/genuine/): apk v2 signature validation.
 - [Diamorphine](https://github.com/m0nad/Diamorphine): some rootkit skills.
 - [KernelSU](https://github.com/tiann/KernelSU): thanks to tiann or else KernelSU Next wouldn't even exist.
-- [Magic Mount Port](https://github.com/5ec1cff/KernelSU/blob/main/userspace/ksud/src/magic_mount.rs): 💜 5ec1cff for saving KernelSU!
