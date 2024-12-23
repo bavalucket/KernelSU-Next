@@ -46,6 +46,7 @@ import com.rifsxd.ksunext.ui.theme.KernelSUTheme
 import com.rifsxd.ksunext.ui.util.LocalSnackbarHost
 import com.rifsxd.ksunext.ui.util.rootAvailable
 import com.rifsxd.ksunext.ui.util.install
+import com.rifsxd.ksunext.ui.util.*
 
 class MainActivity : ComponentActivity() {
 
@@ -61,6 +62,17 @@ class MainActivity : ComponentActivity() {
 
         val isManager = Natives.becomeManager(ksuApp.packageName)
 	    if (isManager) install()
+
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+
+        val suSFSVar = getSuSFSVariant()
+        if (suSFSVar != "NON-GKI") {
+            if (prefs.getBoolean("enable_susfs", false)) {
+                if (susfsSUSSU_Mode() != "2") {
+                    susfsSUSSU_1()
+                }
+            }
+        }
 
         setContent {
             KernelSUTheme {
