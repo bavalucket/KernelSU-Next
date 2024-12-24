@@ -428,6 +428,20 @@ private fun ModuleList(
             },
         ) {
             when {
+                !viewModel.isOverlayAvailable -> {
+                    item {
+                        Box(
+                            modifier = Modifier.fillParentMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                stringResource(R.string.module_overlay_fs_not_available),
+                                textAlign = TextAlign.Center
+                            )
+                        }
+                    }
+                }
+
                 viewModel.moduleList.isEmpty() -> {
                     item {
                         Box(
@@ -537,6 +551,19 @@ fun ModuleItem(
 
         Column(
             modifier = Modifier
+                .run {
+                    if (module.hasWebUi) {
+                        toggleable(
+                            value = isChecked,
+                            interactionSource = interactionSource,
+                            role = Role.Button,
+                            indication = indication,
+                            onValueChange = { onClick(module) }
+                        )
+                    } else {
+			this
+		    }
+                }
                 .padding(22.dp, 18.dp, 22.dp, 12.dp)
         ) {
             Row(
