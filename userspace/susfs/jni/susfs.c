@@ -165,6 +165,8 @@ int main(int argc, char *argv[]) {
 			}
 			printf("%s", enabled_features_buf);
 			free(enabled_features_buf);
+		} else {
+			printf("Invalid\n");
 		}
 	} else if (strcmp(argv[1], "support") == 0) {
 		unsigned long enabled_features;
@@ -183,6 +185,8 @@ int main(int argc, char *argv[]) {
 			} else {
 				printf("Unsupported\n");
 			}
+		} else {
+			printf("Unsupported\n");
 		}
     } else if (argc == 3 && !strcmp(argv[1], "sus_su")) {
 		int last_working_mode = 0;

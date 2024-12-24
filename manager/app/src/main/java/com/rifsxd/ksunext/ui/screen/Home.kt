@@ -269,11 +269,13 @@ private fun StatusCard(
                             style = MaterialTheme.typography.bodyMedium
                         )
                         Spacer(Modifier.height(4.dp))
-                        Text(
-                            text = stringResource(R.string.home_susfs, getSuSFS()),
-                            style = MaterialTheme.typography.bodyMedium
-                        )
-                        
+                        val suSFS = getSuSFS()
+                        if (suSFS == "Supported") {
+                            Text(
+                                text = stringResource(R.string.home_susfs, getSuSFS()),
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                        }
                     }
                 }
 
