@@ -415,10 +415,10 @@ private fun InfoCard() {
             val suSFS = getSuSFS()
 
             if (suSFS == "Supported") {
-                val susSUMode = if (isSUS_SU) "sus su mode: ${susfsSUS_SU_Mode()}" else ""
+                val susSUMode = if (isSUS_SU) "| SuS SU mode: ${susfsSUS_SU_Mode()}" else ""
                 InfoCardItem(
                     label = stringResource(R.string.home_susfs_version),
-                    content = "${getSuSFSVersion()} (${getSuSFSVariant()}) | $susSUMode",
+                    content = "${getSuSFSVersion()} (${getSuSFSVariant()}) $susSUMode",
                     icon = painterResource(R.drawable.ic_sus),
                 )
             }
