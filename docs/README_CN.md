@@ -22,7 +22,7 @@
 KernelSU Next 支持从 4.14 到 6.6 的大多数安卓内核
  - GKI 2.0（5.10+）内核可运行预置镜像和 LKM/KMI
  - GKI 1.0（4.19 - 5.4）内核需要使用 KernelSU 内核驱动重新编译
- - EOL (<4.19) 内核也需要使用 KernelSU 内核驱动重新编译 (3.18 以上内核为试验版本）
+ - EOL (<4.19) 内核也需要使用 KernelSU 内核驱动重新编译
 
 目前只支持 `arm64-v8a` 架构
 
@@ -42,4 +42,3 @@ KernelSU Next 支持从 4.14 到 6.6 的大多数安卓内核
 - [genuine](https://github.com/brevent/genuine/): apk v2 签名验证。
 - [Diamorphine](https://github.com/m0nad/Diamorphine): 一些 Rootkit 技巧。
 - [KernelSU](https://github.com/tiann/KernelSU): 感谢 tiann，否则 KernelSU Next 根本不会存在。
-- [Magic Mount Port](https://github.com/5ec1cff/KernelSU/blob/main/userspace/ksud/src/magic_mount.rs): 💜 5ec1cff 挽救 KernelSU!
