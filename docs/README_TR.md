@@ -32,7 +32,7 @@ KernelSU'daki güvenlik açıklarını bildirme hakkında bilgi için [SECURITY.
 
 ## Lisans
 
-- `kernel` dizini altındaki dosyalar sadece [GPL-2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)lisansına tabiidir.
+- `kernel` dizini altındaki dosyalar sadece [GPL-2.0](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html) lisansına tabiidir.
 - `kernel` dizini dışındaki diğer tüm kısımlar [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html) ya da daha sonraki bir sürüm lisansa tabiidir.
 
 ## Krediler
