@@ -36,6 +36,8 @@
     <string name="module">Module</string>
     <string name="confirm_module_installation">Confirm Installation</string>
     <string name="module_install_prompt_with_name">Do you want to continue installing module %1$s?</string>
+    <string name="module_sort_action_first">Sort (Action First)</string>
+    <string name="module_sort_enabled_first">Sort (Enabled First)</string>
     <string name="uninstall">Uninstall</string>
     <string name="restore">Restore</string>
     <string name="module_install">Install</string>
