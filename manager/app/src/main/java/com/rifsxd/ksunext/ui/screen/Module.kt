@@ -128,6 +128,10 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
     var zipUri by remember { mutableStateOf<Uri?>(null) }
     var showConfirmDialog by remember { mutableStateOf(false) }
 
+    val webUILauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { viewModel.fetchModuleList() }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -226,7 +230,7 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
                     },
                     onClickModule = { id, name, hasWebUi ->
                         if (hasWebUi) {
-                            context.startActivity(
+                            webUILauncher.launch(
                                 Intent(context, WebUIActivity::class.java)
                                     .setData(Uri.parse("kernelsu-next://webui/$id"))
                                     .putExtra("id", id)
