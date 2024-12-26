@@ -118,8 +118,8 @@ fun ExecuteModuleActionScreen(navigator: DestinationsNavigator, moduleId: String
         floatingActionButton = {
             if (!isActionRunning) {
                 ExtendedFloatingActionButton(
-                    text = { Text("Go Back") },
-                    icon = { Icon(Icons.Filled.Close, contentDescription = "Back") },
+                    text = Text(text = stringResource(R.string.close)) },
+                    icon = { Icon(Icons.Filled.Close, contentDescription = null) },
                     onClick = {
                         navigator.popBackStack()
                     }
