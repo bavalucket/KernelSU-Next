@@ -228,7 +228,7 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
                         if (hasWebUi) {
                             context.startActivity(
                                 Intent(context, WebUIActivity::class.java)
-                                    .setData(Uri.parse("kernelsu://webui/$id"))
+                                    .setData(Uri.parse("kernelsu-next://webui/$id"))
                                     .putExtra("id", id)
                                     .putExtra("name", name)
                             )
