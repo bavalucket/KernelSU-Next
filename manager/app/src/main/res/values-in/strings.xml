@@ -100,6 +100,7 @@
     <string name="module_start_downloading">Mulai mengunduh: %s</string>
     <string name="new_version_available">Tersedia versi terbaru %s, Klik untuk membarui.</string>
     <string name="launch_app">Jalankan</string>
+    <string name="close">Menutup</string>
     <string name="force_stop_app">Paksa berhenti</string>
     <string name="restart_app">Mulai ulang</string>
     <string name="failed_to_update_sepolicy">Gagal membarui aturan SELinux pada: %s</string>
