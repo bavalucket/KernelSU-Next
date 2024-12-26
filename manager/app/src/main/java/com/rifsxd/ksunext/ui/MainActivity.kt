@@ -34,8 +34,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.NavHostAnimatedDestinationStyle
+import com.ramcosta.composedestinations.generated.destinations.ExecuteModuleActionScreenDestination
 import com.ramcosta.composedestinations.generated.NavGraphs
 import com.ramcosta.composedestinations.utils.isRouteOnBackStackAsState
 import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
@@ -78,8 +80,19 @@ class MainActivity : ComponentActivity() {
             KernelSUTheme {
                 val navController = rememberNavController()
                 val snackBarHostState = remember { SnackbarHostState() }
+                val currentDestination = navController.currentBackStackEntryAsState()?.value?.destination
+
+                val showBottomBar = when (currentDestination?.route) {
+                    ExecuteModuleActionScreenDestination.route -> false // Hide for HomeScreen
+                    else -> true
+                }
+
                 Scaffold(
-                    bottomBar = { BottomBar(navController) },
+                    bottomBar = {
+                        if (showBottomBar) {
+                            BottomBar(navController)
+                        }
+                    },
                     contentWindowInsets = WindowInsets(0, 0, 0, 0)
                 ) { innerPadding ->
                     CompositionLocalProvider(
