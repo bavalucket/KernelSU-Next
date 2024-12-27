@@ -83,7 +83,7 @@ class MainActivity : ComponentActivity() {
                 val currentDestination = navController.currentBackStackEntryAsState()?.value?.destination
 
                 val showBottomBar = when (currentDestination?.route) {
-                    ExecuteModuleActionScreenDestination.route -> false // Hide for HomeScreen
+                    ExecuteModuleActionScreenDestination.route -> false // Hide for ExecuteModuleActionScreen
                     else -> true
                 }
 
