@@ -66,7 +66,6 @@ fun ExecuteModuleActionScreen(navigator: DestinationsNavigator, moduleId: String
 
     BackHandler(enabled = isActionRunning) {
         // Disable back button if action is running
-        // TODO: Disable Destination Navbar to evade hang on destonation change caused by runModuleAction() in ui.util.KsuCli, users shoudln't get out of actionScreen if action is running
     }
 
     LaunchedEffect(Unit) {

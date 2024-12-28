@@ -38,6 +38,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.animations.NavHostAnimatedDestinationStyle
 import com.ramcosta.composedestinations.generated.destinations.ExecuteModuleActionScreenDestination
+import com.ramcosta.composedestinations.generated.destinations.FlashScreenDestination
 import com.ramcosta.composedestinations.generated.NavGraphs
 import com.ramcosta.composedestinations.utils.isRouteOnBackStackAsState
 import com.ramcosta.composedestinations.utils.rememberDestinationsNavigator
@@ -83,6 +84,7 @@ class MainActivity : ComponentActivity() {
                 val currentDestination = navController.currentBackStackEntryAsState()?.value?.destination
 
                 val showBottomBar = when (currentDestination?.route) {
+                    FlashScreenDestination.route -> false // Hide for FlashScreenDestination
                     ExecuteModuleActionScreenDestination.route -> false // Hide for ExecuteModuleActionScreen
                     else -> true
                 }
