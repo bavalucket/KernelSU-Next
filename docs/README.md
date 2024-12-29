@@ -19,10 +19,10 @@ A Kernel-based root solution for Android devices.
 
 ## Compatibility State
 
-KernelSU Next officially supports most Android kernels starting from 4.9 upto 6.6.
+KernelSU Next officially supports most Android kernels starting from 4.4 upto 6.6.
  - GKI 2.0 (5.10+) kernels can run pre-built images and LKM/KMI.
  - GKI 1.0 (4.19 - 5.4) kernels need to rebuilt with KernelSU driver.
- - EOL (<4.19) kernels also need to be rebuilt with KernelSU driver.
+ - EOL (<4.14) kernels also need to be rebuilt with KernelSU driver. (3.18+ is experimental and needs some function backports)
 
 Currently, only `arm64-v8a` is supported.
 
