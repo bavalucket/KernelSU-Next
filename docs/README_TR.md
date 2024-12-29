@@ -19,10 +19,10 @@ Android cihazlar için Kernel tabanlı bir root çözümü.
 
 ## Uyumluluk Durumu
 
-KernelSU Next, 4.9'dan başlayarak 6.6'ya kadar çoğu Android çekirdeğini resmi olarak desteklemektedir.
+KernelSU Next, 4.4'dan başlayarak 6.6'ya kadar çoğu Android çekirdeğini resmi olarak desteklemektedir.
  - GKI 2.0 (5.10+) çekirdekleri önceden oluşturulmuş görüntüleri ve LKM/KMI'yi çalıştırabilir.
  - GKI 1.0 (4.19 - 5.4) çekirdeklerinin KernelSU sürücüsü ile yeniden oluşturulması gerekir.
- - EOL (<4.19) çekirdeklerinin de KernelSU sürücüsü ile yeniden oluşturulması gerekir.
+ - EOL (<4.14) çekirdeklerinin de KernelSU sürücüsü ile yeniden oluşturulması gerekir. (3.18+ deneysel bir sürümdür ve bazı işlevlerin geriye dönük uyarlanması gerekmektedir.)
 
 Şu anda sadece `arm64-v8a` desteklenmektedir.
 
