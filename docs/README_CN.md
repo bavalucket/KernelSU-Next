@@ -14,15 +14,15 @@
 ## 特性
 
 1. 基于内核的 SU 和权限管理
-2. 基于 [Magic Mount](https://github.com/topjohnwu/Magisk/blob/c512496847d182526f2043295ecfd275398eccac/docs/releases/26100.md#new-magic-mount-implementation) 的模块系统
+2. 基于 [OverlayFS]([https://github.com/topjohnwu/Magisk/blob/c512496847d182526f2043295ecfd275398eccac/docs/releases/26100.md#new-magic-mount-implementation](https://en.m.wikipedia.org/wiki/OverlayFS)) 的模块系统
 3. [App Profile](https://kernelsu.org/guide/app-profile.html)：把 Root 权限关进笼子里
 
 ## 兼容状态
 
-KernelSU Next 支持从 4.9 到 6.6 的大多数安卓内核
+KernelSU Next 支持从 4.4 到 6.6 的大多数安卓内核
  - GKI 2.0（5.10+）内核可运行预置镜像和 LKM/KMI
  - GKI 1.0（4.19 - 5.4）内核需要使用 KernelSU 内核驱动重新编译
- - EOL (<4.19) 内核也需要使用 KernelSU 内核驱动重新编译
+ - EOL (<4.14) 内核也需要使用 KernelSU 内核驱动重新编译 (3.18+ 是實驗性版本，需要一些功能回溯。)
 
 目前只支持 `arm64-v8a` 架构
 
