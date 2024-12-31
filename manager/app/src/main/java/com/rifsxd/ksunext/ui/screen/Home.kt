@@ -246,7 +246,7 @@ private fun StatusCard(
                     val workingText =
                         "${stringResource(id = R.string.home_working)}$workingMode$safeMode"
 
-                    Icon(Icons.Filled.LocalFireDepartment, stringResource(R.string.home_working))
+                    Icon(Icons.Filled.AcUnit, stringResource(R.string.home_working))
                     Column(Modifier.padding(start = 20.dp)) {
                         Text(
                             text = workingText,
