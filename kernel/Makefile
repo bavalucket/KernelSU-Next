@@ -61,14 +61,8 @@ endif
 $(info -- KernelSU-Next Manager signature size: $(KSU_NEXT_EXPECTED_SIZE))
 $(info -- KernelSU-Next Manager signature hash: $(KSU_NEXT_EXPECTED_HASH))
 
-$(info -- KernelSU Manager signature size: $(KSU_EXPECTED_SIZE))
-$(info -- KernelSU Manager signature hash: $(KSU_EXPECTED_HASH))
-
 ccflags-y += -DEXPECTED_NEXT_SIZE=$(KSU_NEXT_EXPECTED_SIZE)
 ccflags-y += -DEXPECTED_NEXT_HASH=\"$(KSU_NEXT_EXPECTED_HASH)\"
-
-ccflags-y += -DEXPECTED_SIZE=$(KSU_EXPECTED_SIZE)
-ccflags-y += -DEXPECTED_HASH=\"$(KSU_EXPECTED_HASH)\"
 
 ccflags-y += -DKSU_UMOUNT
 
