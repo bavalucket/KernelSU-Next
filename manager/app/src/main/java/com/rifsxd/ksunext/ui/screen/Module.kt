@@ -55,7 +55,6 @@ import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.rememberTopAppBarState
@@ -96,6 +95,7 @@ import com.rifsxd.ksunext.R
 import com.rifsxd.ksunext.ui.component.ConfirmResult
 import com.rifsxd.ksunext.ui.component.rememberConfirmDialog
 import com.rifsxd.ksunext.ui.component.rememberLoadingDialog
+import com.rifsxd.ksunext.ui.component.SearchAppBar
 import com.rifsxd.ksunext.ui.util.*
 import com.rifsxd.ksunext.ui.util.DownloadListener
 import com.rifsxd.ksunext.ui.util.LocalSnackbarHost
@@ -145,8 +145,12 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                actions = {
+            SearchAppBar(
+                title = { Text(stringResource(R.string.module)) },
+                searchText = viewModel.search,
+                onSearchTextChange = { viewModel.search = it },
+                onClearClick = { viewModel.search = "" },
+                dropdownContent = {
                     var showDropdown by remember { mutableStateOf(false) }
                     IconButton(
                         onClick = { showDropdown = true },
@@ -203,9 +207,7 @@ fun ModuleScreen(navigator: DestinationsNavigator) {
                         }
                     }
                 },
-                scrollBehavior = scrollBehavior,
-                title = { Text(stringResource(R.string.module)) },
-                windowInsets = WindowInsets.safeDrawing.only(WindowInsetsSides.Top + WindowInsetsSides.Horizontal)
+                scrollBehavior = scrollBehavior
             )
         },
         floatingActionButton = {
@@ -535,7 +537,6 @@ private fun ModuleList(
 
                 else -> {
                     items(viewModel.moduleList) { module ->
-                        var isChecked by rememberSaveable(module) { mutableStateOf(module.enabled) }
                         val scope = rememberCoroutineScope()
                         val updatedModule by produceState(initialValue = Triple("", "", "")) {
                             scope.launch(Dispatchers.IO) {
@@ -546,7 +547,6 @@ private fun ModuleList(
                         ModuleItem(
                             navigator = navigator,
                             module = module,
-                            isChecked = isChecked,
                             updateUrl = updatedModule.first,
                             onUninstall = {
                                 scope.launch { onModuleUninstall(module) }
@@ -558,11 +558,10 @@ private fun ModuleList(
                                 scope.launch {
                                     val success = loadingDialog.withLoading {
                                         withContext(Dispatchers.IO) {
-                                            toggleModule(module.dirId, !isChecked)
+                                            toggleModule(module.dirId, !module.enabled)
                                         }
                                     }
                                     if (success) {
-                                        isChecked = it
                                         viewModel.fetchModuleList()
 
                                         val result = snackBarHost.showSnackbar(
@@ -574,7 +573,7 @@ private fun ModuleList(
                                             reboot()
                                         }
                                     } else {
-                                        val message = if (isChecked) failedDisable else failedEnable
+                                        val message = if (module.enabled) failedDisable else failedEnable
                                         snackBarHost.showSnackbar(message.format(module.name))
                                     }
                                 }
@@ -610,7 +609,6 @@ private fun ModuleList(
 fun ModuleItem(
     navigator: DestinationsNavigator,
     module: ModuleViewModel.ModuleInfo,
-    isChecked: Boolean,
     updateUrl: String,
     onUninstall: (ModuleViewModel.ModuleInfo) -> Unit,
     onRestore: (ModuleViewModel.ModuleInfo) -> Unit,
@@ -631,7 +629,7 @@ fun ModuleItem(
                 .run {
                     if (module.hasWebUi) {
                         toggleable(
-                            value = isChecked,
+                            value = module.enabled,
                             interactionSource = interactionSource,
                             role = Role.Button,
                             indication = indication,
@@ -687,7 +685,7 @@ fun ModuleItem(
                 ) {
                     Switch(
                         enabled = !module.update,
-                        checked = isChecked,
+                        checked = module.enabled,
                         onCheckedChange = onCheckChanged,
                         interactionSource = if (!module.hasWebUi) interactionSource else null
                     )
@@ -826,7 +824,7 @@ fun ModuleItem(
                             imageVector = Icons.Outlined.Delete,
                             contentDescription = null
                         )
-                        if (!module.hasActionScript && !module.hasWebUi && updateUrl.isEmpty()) {  
+                        if (!module.hasActionScript && !module.hasWebUi && updateUrl.isEmpty()) {
                             Text(
                                 modifier = Modifier.padding(start = 7.dp),
                                 fontFamily = MaterialTheme.typography.labelMedium.fontFamily,
@@ -859,5 +857,5 @@ fun ModuleItemPreview() {
         hasActionScript = false,
         dirId = "dirId"
     )
-    ModuleItem(EmptyDestinationsNavigator, module, true, "", {}, {}, {}, {}, {})
+    ModuleItem(EmptyDestinationsNavigator, module, "", {}, {}, {}, {}, {})
 }
