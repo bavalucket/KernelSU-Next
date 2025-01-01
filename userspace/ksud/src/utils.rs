@@ -293,7 +293,7 @@ pub fn uninstall(magiskboot_path: Option<PathBuf>) -> Result<()> {
     std::fs::remove_dir_all(defs::MODULE_UPDATE_TMP_DIR).ok();
     println!("- Restore boot image..");
     boot_patch::restore(None, magiskboot_path, true)?;
-    println!("- Uninstall KernelSU-Next manager..");
+    println!("- Uninstall KernelSU manager..");
     Command::new("pm")
         .args(["uninstall", "com.rifsxd.ksunext"])
         .spawn()?;
