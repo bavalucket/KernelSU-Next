@@ -82,10 +82,10 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Download arm64 susfs
+      - name: Download arm64 susfsd
         uses: actions/download-artifact@v4
         with:
-          name: susfs-aarch64-linux-android
+          name: susfsd-aarch64-linux-android
           path: .
 
       - name: Download arm64 ksud
