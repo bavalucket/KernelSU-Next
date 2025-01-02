@@ -21,7 +21,7 @@ jobs:
     uses: ./.github/workflows/build-lkm.yml
     secrets: inherit
 
-  build-susfs:
+  build-susfsd:
     needs: build-lkm
     strategy:
       matrix:
