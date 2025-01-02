@@ -120,48 +120,48 @@ fun getModuleCount(): Int {
     }.getOrElse { return 0 }
 }
 
-private fun getSuSFSPath(): String {
-    return ksuApp.applicationInfo.nativeLibraryDir + File.separator + "libsusfs.so"
+private fun getSuSFSDaemonPath(): String {
+    return ksuApp.applicationInfo.nativeLibraryDir + File.separator + "libsusfsd.so"
 }
 
 fun getSuSFS(): String {
     val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} support")
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} support")
     return result
 }
 
 fun getSuSFSVersion(): String {
     val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} version")
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} version")
     return result
 }
 
 fun getSuSFSVariant(): String {
     val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} variant")
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} variant")
     return result
 }
 fun getSuSFSFeatures(): String {
     val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} features")
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} features")
     return result
 }
 
 fun susfsSUS_SU_0(): String {
     val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} sus_su 0")
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su 0")
     return result
 }
 
 fun susfsSUS_SU_2(): String {
     val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} sus_su 2")
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su 2")
     return result
 }
 
 fun susfsSUS_SU_Mode(): String {
     val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSPath()} sus_su mode")
+    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su mode")
     return result
 }
 

@@ -69,16 +69,16 @@ class MainActivity : ComponentActivity() {
         val isManager = Natives.becomeManager(ksuApp.packageName)
 	    if (isManager) install()
 
-        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        // val prefs = getSharedPreferences("settings", MODE_PRIVATE)
 
-        val isSUS_SU = getSuSFSFeatures()
-        if (isSUS_SU == "CONFIG_KSU_SUSFS_SUS_SU") {
-            if (prefs.getBoolean("enable_sus_su", false)) {
-                if (susfsSUS_SU_Mode() != "2") {
-                    susfsSUS_SU_2()
-                }
-            }
-        }
+        // val isSUS_SU = getSuSFSFeatures()
+        // if (isSUS_SU == "CONFIG_KSU_SUSFS_SUS_SU") {
+        //     if (prefs.getBoolean("enable_sus_su", false)) {
+        //         if (susfsSUS_SU_Mode() != "2") {
+        //             susfsSUS_SU_2()
+        //         }
+        //     }
+        // }
 
         setContent {
             KernelSUTheme {
