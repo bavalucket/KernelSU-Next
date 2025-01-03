@@ -14,7 +14,7 @@ Android cihazlar için Kernel tabanlı bir root çözümü.
 ## Özellikler
 
 1. Çekirdek tabanlı `su` ve kök erişim yönetimi.
-2. [OverlayFS](https://en.wikipedia.org/wiki/OverlayFS) tabanlı modül sistemi.
+2. [Magic Mount](https://github.com/topjohnwu/Magisk/blob/c512496847d182526f2043295ecfd275398eccac/docs/releases/26100.md#new-magic-mount-implementation) tabanlı modül sistemi.
 3. [App Profile](https://kernelsu.org/guide/app-profile.html): Kök gücünü bir kafese kilitleyin.
 
 ## Uyumluluk Durumu
@@ -22,7 +22,7 @@ Android cihazlar için Kernel tabanlı bir root çözümü.
 KernelSU Next, 4.4'dan başlayarak 6.6'ya kadar çoğu Android çekirdeğini resmi olarak desteklemektedir.
  - GKI 2.0 (5.10+) çekirdekleri önceden oluşturulmuş görüntüleri ve LKM/KMI'yi çalıştırabilir.
  - GKI 1.0 (4.19 - 5.4) çekirdeklerinin KernelSU sürücüsü ile yeniden oluşturulması gerekir.
- - EOL (<4.14) çekirdeklerinin de KernelSU sürücüsü ile yeniden oluşturulması gerekir. (3.18+ deneysel bir sürümdür ve bazı işlevlerin geriye dönük uyarlanması gerekmektedir.)
+ - EOL (<4.14) çekirdeklerinin de KernelSU sürücüsü ile yeniden oluşturulması gerekir. (3.18+ deneyseldir ve bazı fonksiyon geri yüklemelerine ihtiyaç duyulabilir.)
 
 Şu anda sadece `arm64-v8a` desteklenmektedir.
 
@@ -42,3 +42,4 @@ KernelSU'daki güvenlik açıklarını bildirme hakkında bilgi için [SECURITY.
 - [genuine](https://github.com/brevent/genuine/): apk v2 imza doğrulama.
 - [Diamorphine](https://github.com/m0nad/Diamorphine): bazı rootkit becerileri.
 - [KernelSU](https://github.com/tiann/KernelSU): tiann'a teşekkürler, yoksa KernelSU Next var olamazdı bile.
+- [Magic Mount Port](https://github.com/5ec1cff/KernelSU/blob/main/userspace/ksud/src/magic_mount.rs): 💜 5ec1cff KernelSU'yu kurtardığınız için!
