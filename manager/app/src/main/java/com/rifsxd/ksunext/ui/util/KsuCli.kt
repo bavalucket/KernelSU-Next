@@ -120,50 +120,50 @@ fun getModuleCount(): Int {
     }.getOrElse { return 0 }
 }
 
-private fun getSuSFSDaemonPath(): String {
-    return ksuApp.applicationInfo.nativeLibraryDir + File.separator + "libsusfsd.so"
-}
+// private fun getSuSFSDaemonPath(): String {
+//     return ksuApp.applicationInfo.nativeLibraryDir + File.separator + "libsusfsd.so"
+// }
 
-fun getSuSFS(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} support")
-    return result
-}
+// fun getSuSFS(): String {
+//     val shell = getRootShell()
+//     val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} support")
+//     return result
+// }
 
-fun getSuSFSVersion(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} version")
-    return result
-}
+// fun getSuSFSVersion(): String {
+//     val shell = getRootShell()
+//     val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} version")
+//     return result
+// }
 
-fun getSuSFSVariant(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} variant")
-    return result
-}
-fun getSuSFSFeatures(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} features")
-    return result
-}
+// fun getSuSFSVariant(): String {
+//     val shell = getRootShell()
+//     val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} variant")
+//     return result
+// }
+// fun getSuSFSFeatures(): String {
+//     val shell = getRootShell()
+//     val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} features")
+//     return result
+// }
 
-fun susfsSUS_SU_0(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su 0")
-    return result
-}
+// fun susfsSUS_SU_0(): String {
+//     val shell = getRootShell()
+//     val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su 0")
+//     return result
+// }
 
-fun susfsSUS_SU_2(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su 2")
-    return result
-}
+// fun susfsSUS_SU_2(): String {
+//     val shell = getRootShell()
+//     val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su 2")
+//     return result
+// }
 
-fun susfsSUS_SU_Mode(): String {
-    val shell = getRootShell()
-    val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su mode")
-    return result
-}
+// fun susfsSUS_SU_Mode(): String {
+//     val shell = getRootShell()
+//     val result = ShellUtils.fastCmd(shell, "${getSuSFSDaemonPath()} sus_su mode")
+//     return result
+// }
 
 fun getSuperuserCount(): Int {
     return Natives.allowList.size
@@ -403,10 +403,12 @@ suspend fun getSupportedKmis(): List<String> = withContext(Dispatchers.IO) {
     out.filter { it.isNotBlank() }.map { it.trim() }
 }
 
-fun overlayFsAvailable(): Boolean {
-    val shell = getRootShell()
-    // check /proc/filesystems
-    return ShellUtils.fastCmdResult(shell, "cat /proc/filesystems | grep overlay")
+fun hasDummy(): Boolean {
+//fun overlayFsAvailable(): Boolean {
+    // val shell = getRootShell()
+    // // check /proc/filesystems
+    // return ShellUtils.fastCmdResult(shell, "cat /proc/filesystems | grep overlay")
+    return true
 }
 
 fun hasMagisk(): Boolean {

@@ -416,7 +416,7 @@ private fun ModuleList(
 
         val success = loadingDialog.withLoading {
             withContext(Dispatchers.IO) {
-                uninstallModule(module.id)
+                uninstallModule(module.dirId)
             }
         }
 
@@ -456,7 +456,7 @@ private fun ModuleList(
 
         val success = loadingDialog.withLoading {
             withContext(Dispatchers.IO) {
-                restoreModule(module.id)
+                restoreModule(module.dirId)
             }
         }
 
@@ -489,7 +489,7 @@ private fun ModuleList(
             },
         ) {
             when {
-                !viewModel.isOverlayAvailable -> {
+                !viewModel.isDummy -> {
                     item {
                         Box(
                             modifier = Modifier.fillParentMaxSize(),
@@ -542,7 +542,7 @@ private fun ModuleList(
                                 scope.launch {
                                     val success = loadingDialog.withLoading {
                                         withContext(Dispatchers.IO) {
-                                            toggleModule(module.id, !isChecked)
+                                            toggleModule(module.dirId, !isChecked)
                                         }
                                     }
                                     if (success) {
@@ -705,7 +705,7 @@ fun ModuleItem(
                     FilledTonalButton(
                         modifier = Modifier.defaultMinSize(52.dp, 32.dp),
                         onClick = {
-                            navigator.navigate(ExecuteModuleActionScreenDestination(module.id))
+                            navigator.navigate(ExecuteModuleActionScreenDestination(module.dirId))
                             viewModel.markNeedRefresh()
                         },
                         contentPadding = ButtonDefaults.TextButtonContentPadding
@@ -840,7 +840,8 @@ fun ModuleItemPreview() {
         remove = false,
         updateJson = "",
         hasWebUi = false,
-        hasActionScript = false
+        hasActionScript = false,
+        dirId = "dirId"
     )
     ModuleItem(EmptyDestinationsNavigator, module, true, "", {}, {}, {}, {}, {})
 }

@@ -63,6 +63,8 @@
     <string name="safe_mode">Mode aman</string>
     <string name="reboot_to_apply">Reboot agar berfungsi</string>
     <string name="module_magisk_conflict">Konflik dengan Magisk, fungsi modul ditiadakan!</string>
+    <string name="home_module_mount">Modul Sistem</string>
+    <string name="home_magic_mount">Magic Mount</string>
     <string name="home_next_kernelsu">🔥 Pembangunan Next</string>
     <string name="home_next_kernelsu_repo">https://github.com/rifsxd/KernelSU-Next</string>
     <string name="home_next_kernelsu_body">Next cabang eksperimental. Lihat di GitHub!</string>
