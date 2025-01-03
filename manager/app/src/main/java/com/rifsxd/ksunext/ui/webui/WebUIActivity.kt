@@ -39,7 +39,7 @@ class WebUIActivity : ComponentActivity() {
         val name = intent.getStringExtra("name")!!
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             @Suppress("DEPRECATION")
-            setTaskDescription(ActivityManager.TaskDescription("KernelSUt - $name"))
+            setTaskDescription(ActivityManager.TaskDescription("KernelSU - $name"))
         } else {
             val taskDescription = ActivityManager.TaskDescription.Builder().setLabel("KernelSU - $name").build()
             setTaskDescription(taskDescription)
