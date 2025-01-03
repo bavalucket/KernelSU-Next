@@ -1,11 +1,11 @@
 name: Build LKM for KernelSU-Next
 on:
   push:
-    branches: [ "magic" ]
+    branches: [ "next" ]
     paths:
       - ".github/workflows/build-lkm.yml"
   pull_request:
-    branches: [ "magic" ]
+    branches: [ "next" ]
     paths:
       - ".github/workflows/build-lkm.yml"
   workflow_call:
