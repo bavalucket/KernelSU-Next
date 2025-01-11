@@ -65,10 +65,15 @@
     <string name="home_module_mount">Module system</string>
     <string name="home_magic_mount">Magic Mount</string>
     <string name="home_overlayfs_mount">OverlayFS</string>
+    <string name="unavailable">Unavailable</string>
     <string name="use_overlay_fs">Use OverlayFS (Beta)</string>
     <string name="use_overlay_fs_summary">Toggle between using OverlayFS over Magic Mount for KernelSU Next\'s mount system.</string>
     <string name="reboot_required">Reboot Required</string>
     <string name="reboot_message">Changes will take effect after rebooting the system. Would you like to reboot now?</string>
+    <string name="module_restore">Restore module</string>
+    <string name="module_restore_message">Restore modules from recent backup.</string>
+    <string name="module_backup">Backup module</string>
+    <string name="module_backup_message">Backup currently installed modules.</string>
     <string name="warning">Warning</string>
     <string name="warning_message">This feature is still in beta and under development. Please ensure you backup your modules before proceeding. Use this feature only if you understand the potential risks. Proceed with caution.</string>
     <string name="proceed">Proceed</string>

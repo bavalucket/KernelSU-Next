@@ -96,6 +96,9 @@ fun SettingScreen(navigator: DestinationsNavigator) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val snackBarHost = LocalSnackbarHost.current
 
+    val isManager = Natives.becomeManager(ksuApp.packageName)
+    val ksuVersion = if (isManager) Natives.version else null
+
     Scaffold(
         topBar = {
             TopBar(
@@ -110,6 +113,8 @@ fun SettingScreen(navigator: DestinationsNavigator) {
         }
         val loadingDialog = rememberLoadingDialog()
         val shrinkDialog = rememberConfirmDialog()
+        val restoreDialog = rememberConfirmDialog()
+        val backupDialog = rememberConfirmDialog()
 
         Column(
             modifier = Modifier
@@ -138,26 +143,30 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             }
 
             val profileTemplate = stringResource(id = R.string.settings_profile_template)
-            ListItem(
-                leadingContent = { Icon(Icons.Filled.Fence, profileTemplate) },
-                headlineContent = { Text(profileTemplate) },
-                supportingContent = { Text(stringResource(id = R.string.settings_profile_template_summary)) },
-                modifier = Modifier.clickable {
-                    navigator.navigate(AppProfileTemplateScreenDestination)
-                }
-            )
+            if (ksuVersion != null) {
+                ListItem(
+                    leadingContent = { Icon(Icons.Filled.Fence, profileTemplate) },
+                    headlineContent = { Text(profileTemplate) },
+                    supportingContent = { Text(stringResource(id = R.string.settings_profile_template_summary)) },
+                    modifier = Modifier.clickable {
+                        navigator.navigate(AppProfileTemplateScreenDestination)
+                    }
+                )
+            }
 
             var umountChecked by rememberSaveable {
                 mutableStateOf(Natives.isDefaultUmountModules())
             }
-            SwitchItem(
-                icon = Icons.Filled.RemoveModerator,
-                title = stringResource(id = R.string.settings_umount_modules_default),
-                summary = stringResource(id = R.string.settings_umount_modules_default_summary),
-                checked = umountChecked
-            ) {
-                if (Natives.setDefaultUmountModules(it)) {
-                    umountChecked = it
+            if (ksuVersion != null) {
+                SwitchItem(
+                    icon = Icons.Filled.RemoveModerator,
+                    title = stringResource(id = R.string.settings_umount_modules_default),
+                    summary = stringResource(id = R.string.settings_umount_modules_default_summary),
+                    checked = umountChecked
+                ) {
+                    if (Natives.setDefaultUmountModules(it)) {
+                        umountChecked = it
+                    }
                 }
             }
 
@@ -177,14 +186,16 @@ fun SettingScreen(navigator: DestinationsNavigator) {
 
             var showWarningDialog by remember { mutableStateOf(false) }
 
-            SwitchItem(
-                icon = Icons.Filled.Build,
-                title = stringResource(id = R.string.use_overlay_fs),
-                summary = stringResource(id = R.string.use_overlay_fs_summary),
-                checked = useOverlayFs
-            ) {
-                if (!hasShownWarning.value) {
-                    showWarningDialog = true
+            if (ksuVersion != null) {
+                SwitchItem(
+                    icon = Icons.Filled.Build,
+                    title = stringResource(id = R.string.use_overlay_fs),
+                    summary = stringResource(id = R.string.use_overlay_fs_summary),
+                    checked = useOverlayFs
+                ) {
+                    if (!hasShownWarning.value) {
+                        showWarningDialog = true
+                    }
                 }
             }
 
@@ -198,6 +209,11 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                             showWarningDialog = false
                             prefs.edit().putBoolean("use_overlay_fs", !useOverlayFs).apply()
                             useOverlayFs = !useOverlayFs
+                            if (useOverlayFs) {
+                                moduleBackup()
+                            } else {
+                                moduleMigration()
+                            }
                             if (isManager) install()
                             showRebootDialog = true
                         }) {
@@ -373,6 +389,54 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 )
             }
 
+            if (ksuVersion != null) {
+                val moduleBackup = stringResource(id = R.string.module_backup)
+                val backupMessage = stringResource(id = R.string.module_backup_message)
+                ListItem(
+                    leadingContent = {
+                        Icon(
+                            Icons.Filled.Backup,
+                            moduleBackup
+                        )
+                    },
+                    headlineContent = { Text(moduleBackup) },
+                    modifier = Modifier.clickable {
+                        scope.launch {
+                            val result = backupDialog.awaitConfirm(title = moduleBackup, content = backupMessage)
+                            if (result == ConfirmResult.Confirmed) {
+                                loadingDialog.withLoading {
+                                    moduleBackup()
+                                }
+                            }
+                        }
+                    }
+                )
+            }
+
+            if (ksuVersion != null) {
+                val moduleRestore = stringResource(id = R.string.module_restore)
+                val restoreMessage = stringResource(id = R.string.module_restore_message)
+                ListItem(
+                    leadingContent = {
+                        Icon(
+                            Icons.Filled.Restore,
+                            moduleRestore
+                        )
+                    },
+                    headlineContent = { Text(moduleRestore) },
+                    modifier = Modifier.clickable {
+                        scope.launch {
+                            val result = restoreDialog.awaitConfirm(title = moduleRestore, content = restoreMessage)
+                            if (result == ConfirmResult.Confirmed) {
+                                loadingDialog.withLoading {
+                                    moduleRestore()
+                                    showRebootDialog = true
+                                }
+                            }
+                        }
+                    }
+                )
+            }
 
             if (useOverlayFs) {
                 val shrink = stringResource(id = R.string.shrink_sparse_image)

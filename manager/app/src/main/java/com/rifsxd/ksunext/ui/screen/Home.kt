@@ -52,10 +52,14 @@ fun HomeScreen(navigator: DestinationsNavigator) {
     val kernelVersion = getKernelVersion()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
 
+    val isManager = Natives.becomeManager(ksuApp.packageName)
+    val ksuVersion = if (isManager) Natives.version else null
+
     Scaffold(
         topBar = {
             TopBar(
                 kernelVersion,
+                ksuVersion,
                 onInstallClick = {
                     navigator.navigate(InstallScreenDestination)
                 },
@@ -72,8 +76,6 @@ fun HomeScreen(navigator: DestinationsNavigator) {
                 .padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            val isManager = Natives.becomeManager(ksuApp.packageName)
-            val ksuVersion = if (isManager) Natives.version else null
             val lkmMode = ksuVersion?.let {
                 if (it >= Natives.MINIMAL_SUPPORTED_KERNEL_LKM && kernelVersion.isGKI()) Natives.isLkmMode else null
             }
@@ -164,6 +166,7 @@ fun RebootDropdownItem(@StringRes id: Int, reason: String = "") {
 @Composable
 private fun TopBar(
     kernelVersion: KernelVersion,
+    ksuVersion: Int?,
     onInstallClick: () -> Unit,
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
@@ -179,30 +182,31 @@ private fun TopBar(
                 }
             }
 
-            var showDropdown by remember { mutableStateOf(false) }
-            IconButton(onClick = {
-                showDropdown = true
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Refresh,
-                    contentDescription = stringResource(id = R.string.reboot)
-                )
-
-                DropdownMenu(expanded = showDropdown, onDismissRequest = {
-                    showDropdown = false
+            if (ksuVersion != null) {
+                var showDropdown by remember { mutableStateOf(false) }
+                IconButton(onClick = {
+                    showDropdown = true
                 }) {
+                    Icon(
+                        imageVector = Icons.Filled.Refresh,
+                        contentDescription = stringResource(id = R.string.reboot)
+                    )
 
-                    RebootDropdownItem(id = R.string.reboot)
+                    DropdownMenu(expanded = showDropdown, onDismissRequest = {
+                        showDropdown = false
+                    }) {
+                        RebootDropdownItem(id = R.string.reboot)
 
-                    val pm = LocalContext.current.getSystemService(Context.POWER_SERVICE) as PowerManager?
-                    @Suppress("DEPRECATION")
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && pm?.isRebootingUserspaceSupported == true) {
-                        RebootDropdownItem(id = R.string.reboot_userspace, reason = "userspace")
+                        val pm = LocalContext.current.getSystemService(Context.POWER_SERVICE) as PowerManager?
+                        @Suppress("DEPRECATION")
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && pm?.isRebootingUserspaceSupported == true) {
+                            RebootDropdownItem(id = R.string.reboot_userspace, reason = "userspace")
+                        }
+                        RebootDropdownItem(id = R.string.reboot_recovery, reason = "recovery")
+                        RebootDropdownItem(id = R.string.reboot_bootloader, reason = "bootloader")
+                        RebootDropdownItem(id = R.string.reboot_download, reason = "download")
+                        RebootDropdownItem(id = R.string.reboot_edl, reason = "edl")
                     }
-                    RebootDropdownItem(id = R.string.reboot_recovery, reason = "recovery")
-                    RebootDropdownItem(id = R.string.reboot_bootloader, reason = "bootloader")
-                    RebootDropdownItem(id = R.string.reboot_download, reason = "download")
-                    RebootDropdownItem(id = R.string.reboot_edl, reason = "edl")
                 }
             }
         },
@@ -354,6 +358,9 @@ private fun InfoCard() {
         mutableStateOf(prefs.getBoolean("use_overlay_fs", false))
     }
 
+    val isManager = Natives.becomeManager(ksuApp.packageName)
+    val ksuVersion = if (isManager) Natives.version else null
+
     LaunchedEffect(Unit) {
         useOverlayFs = prefs.getBoolean("use_overlay_fs", false)
     }
@@ -432,10 +439,10 @@ private fun InfoCard() {
             Spacer(Modifier.height(16.dp))
             InfoCardItem(
                 label = stringResource(R.string.home_module_mount),
-                content = if (useOverlayFs) {
-                    stringResource(R.string.home_overlayfs_mount)
-                } else {
-                    stringResource(R.string.home_magic_mount)
+                content = when {
+                    ksuVersion == null -> stringResource(R.string.unavailable)
+                    useOverlayFs -> stringResource(R.string.home_overlayfs_mount)
+                    else -> stringResource(R.string.home_magic_mount)
                 },
                 icon = Icons.Filled.SettingsSuggest,
             )
