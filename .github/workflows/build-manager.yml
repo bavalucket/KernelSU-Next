@@ -9,6 +9,7 @@ on:
       - 'kernel/**'
       - 'userspace/ksud_overlayfs**'
       - 'userspace/ksud_magic/**'
+      - 'userspace/susfsd/**'
   pull_request:
     branches: [ "next" ]
     paths:
@@ -21,8 +22,20 @@ jobs:
     uses: ./.github/workflows/build-lkm.yml
     secrets: inherit
 
-  build-ksud_overlayfs:
+  build-susfsd:
     needs: build-lkm
+    strategy:
+      matrix:
+        include:
+          - target: aarch64-linux-android
+            os: ubuntu-latest
+    uses: ./.github/workflows/susfsd.yml
+    with:
+      target: ${{ matrix.target }}
+      os: ${{ matrix.os }}
+
+  build-ksud_overlayfs:
+    needs: build-susfsd
     strategy:
       matrix:
         include:
