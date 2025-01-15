@@ -20,7 +20,7 @@
     <string name="home_failure_tip">Ask your kernel developer to integrate KernelSU Next!</string>
     <string name="home_kernel">Kernel version</string>
     <string name="home_susfs">SuSFS: %s</string>
-    <string name="home_susfs_version">SuSFS</string>
+    <string name="home_susfs_version">SuSFS version</string>
     <string name="home_susfs_sus_su">SuS SU</string>
     <string name="home_android">Android version</string>
     <string name="home_manager_version">Manager version</string>
