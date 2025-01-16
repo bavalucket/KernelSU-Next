@@ -87,9 +87,9 @@
     <string name="home_next_kernelsu_body">Branche expérimentale Next. Allez la voir sur Github!</string>
     <string name="home_experimental_kernelsu">⚠️ Attention, développement expérimental!</string>
     <string name="home_experimental_kernelsu_repo">127.0.0.1</string>
-    <string name="home_experimental_kernelsu_body">KernelSU Next est une version non-officielle, toujours en cours de développement. KernelSU Next vous est donc proposé tel quel, sans garantie de stabilité, de performance, ou d'efficiacité.</string>
+    <string name="home_experimental_kernelsu_body">KernelSU Next est une version non-officielle, toujours en cours de développement. KernelSU Next vous est donc proposé tel quel, sans garantie de stabilité, de performance, ou d\'efficiacité.</string>
     <string name="home_experimental_kernelsu_body_point_1"> • Soyez donc en connaissance des risques : vous pourriez faire face à des crashs, des réactions inattendues ou encore des erreurs système.</string>
-    <string name="home_experimental_kernelsu_body_point_2"> • Aucune garantie : Les développeurs ne seront tenus responsables d\'aucune perte de données, de dégâts au système ou d\'autres conséquences résultant de l'utilisation de KernelSU Next.</string>
+    <string name="home_experimental_kernelsu_body_point_2"> • Aucune garantie : Les développeurs ne seront tenus responsables d\'aucune perte de données, de dégâts au système ou d\'autres conséquences résultant de l\'utilisation de KernelSU Next.</string>
     <string name="home_experimental_kernelsu_body_point_3"> • Uniquement à but de tests : KernelSU Next est prévue pour des utilisateurs avertis, qui comprennent les risques et qui sont à l\'aise avec le fait de localiser un problème.</string>
     <string name="about_source_code"><![CDATA[View source code at %1$s]]></string>
     <string name="profile" translatable="false">Profil d\'application</string>
@@ -108,7 +108,7 @@
     <string name="failed_to_update_app_profile">Échec de la mise à jour du profil d\'application pour %s</string>
     <string name="require_kernel_version">La version actuelle de KernelSU next (%d) Est trop ancienne pour que le gestionnaire fonctionne correctement. Merci de mettre à jour vers la version %d ou supérieur!</string>
     <string name="settings_umount_modules_default">Démonter les modules par défaut</string>
-    <string name="settings_umount_modules_default_summary">Valeur globale par défaut pour \"Démonter les modules\" Dans le profil d\'application. Si activé, toutes les modifications systèmes effectuées par des modules seront annulées pour les applications n'ayant pas de profil sélectionné.</string>
+    <string name="settings_umount_modules_default_summary">Valeur globale par défaut pour \"Démonter les modules\" Dans le profil d\'application. Si activé, toutes les modifications systèmes effectuées par des modules seront annulées pour les applications n\'ayant pas de profil sélectionné.</string>
     <string name="settings_susfs_toggle">Cacher les hooks kprobe</string>
     <string name="settings_susfs_toggle_summary">Désactive les hooks kprobe créés par KSU et, à la place, active les hooks non-kprobe intégrés, implémentant les mêmes fonctionnalités qui seraient appliquées à un kernel non-GKI, qui ne supportent krpobe.</string>
     <string name="profile_umount_modules_summary">Activer cette option permettra à KernelSU Next de restaurer n\'importe quel fichier modifié par les modules pour cette app.</string>
