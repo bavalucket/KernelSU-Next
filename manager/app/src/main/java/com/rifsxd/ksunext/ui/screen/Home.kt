@@ -457,7 +457,6 @@ private fun InfoCard() {
             Spacer(Modifier.height(16.dp))
             val isSUS_SU = getSuSFSFeatures() == "CONFIG_KSU_SUSFS_SUS_SU"
             val suSFS = getSuSFS()
-
             if (suSFS == "Supported") {
                 val susSUMode = if (isSUS_SU) "| SuS SU mode: ${susfsSUS_SU_Mode()}" else ""
                 InfoCardItem(
