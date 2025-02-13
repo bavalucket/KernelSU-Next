@@ -155,7 +155,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             }
 
             var umountChecked by rememberSaveable {
-                mutableStateOf(Natives.isDefaultUmountModules())
+                mutableStateOf(false)
             }
             if (ksuVersion != null) {
                 SwitchItem(
@@ -300,13 +300,30 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 )
             }
             SwitchItem(
-                icon = Icons.Filled.DeveloperMode,
+                icon = Icons.Filled.Web,
                 title = stringResource(id = R.string.enable_web_debugging),
                 summary = stringResource(id = R.string.enable_web_debugging_summary),
                 checked = enableWebDebugging
             ) {
                 prefs.edit().putBoolean("enable_web_debugging", it).apply()
                 enableWebDebugging = it
+            }
+
+            var developerOptionsEnabled by rememberSaveable {
+                mutableStateOf(
+                    prefs.getBoolean("enable_developer_options", false)
+                )
+            }
+            if (ksuVersion != null) {
+                SwitchItem(
+                    icon = Icons.Filled.DeveloperMode,
+                    title = stringResource(id = R.string.enable_developer_options),
+                    summary = stringResource(id = R.string.enable_developer_options_summary),
+                    checked = developerOptionsEnabled
+                ) {
+                    prefs.edit().putBoolean("enable_developer_options", it).apply()
+                    developerOptionsEnabled = it
+                }
             }
 
             var showBottomsheet by remember { mutableStateOf(false) }
