@@ -57,6 +57,12 @@
     <string name="module_restore_failed">恢复失败：%s</string>
     <string name="module_version">版本</string>
     <string name="module_author">作者</string>
+    <string name="module_id">模块标识</string>
+    <string name="module_version_code">模块版本</string>
+    <string name="module_update_json">更新配置</string>
+    <string name="module_update_json_empty"无更新配置</string>
+    <string name="enable_developer_options">启用开发者模式</string>
+    <string name="enable_developer_options_summary">显示隐藏的开发者专用设置和调试信息</string>
     <string name="module_overlay_fs_not_available">OverlayFS 被内核禁用，模块不可用。</string>
     <string name="refresh">刷新</string>
     <string name="show_system_apps">显示系统应用</string>
