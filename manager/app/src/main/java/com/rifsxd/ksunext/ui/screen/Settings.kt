@@ -63,6 +63,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.AppProfileTemplateScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.FlashScreenDestination
+import com.ramcosta.composedestinations.generated.destinations.BackupRestoreScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.ramcosta.composedestinations.navigation.EmptyDestinationsNavigator
 import kotlinx.coroutines.Dispatchers
@@ -113,8 +114,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
         }
         val loadingDialog = rememberLoadingDialog()
         val shrinkDialog = rememberConfirmDialog()
-        val restoreDialog = rememberConfirmDialog()
-        val backupDialog = rememberConfirmDialog()
 
         Column(
             modifier = Modifier
@@ -163,6 +162,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     title = stringResource(id = R.string.settings_umount_modules_default),
                     summary = stringResource(id = R.string.settings_umount_modules_default_summary),
                     checked = umountChecked
+                    
                 ) {
                     if (Natives.setDefaultUmountModules(it)) {
                         umountChecked = it
@@ -436,50 +436,17 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             }
 
             if (ksuVersion != null) {
-                val moduleBackup = stringResource(id = R.string.module_backup)
-                val backupMessage = stringResource(id = R.string.module_backup_message)
+                val backupRestore = stringResource(id = R.string.backup_restore)
                 ListItem(
                     leadingContent = {
                         Icon(
                             Icons.Filled.Backup,
-                            moduleBackup
+                            backupRestore
                         )
                     },
-                    headlineContent = { Text(moduleBackup) },
+                    headlineContent = { Text(backupRestore) },
                     modifier = Modifier.clickable {
-                        scope.launch {
-                            val result = backupDialog.awaitConfirm(title = moduleBackup, content = backupMessage)
-                            if (result == ConfirmResult.Confirmed) {
-                                loadingDialog.withLoading {
-                                    moduleBackup()
-                                }
-                            }
-                        }
-                    }
-                )
-            }
-
-            if (ksuVersion != null) {
-                val moduleRestore = stringResource(id = R.string.module_restore)
-                val restoreMessage = stringResource(id = R.string.module_restore_message)
-                ListItem(
-                    leadingContent = {
-                        Icon(
-                            Icons.Filled.Restore,
-                            moduleRestore
-                        )
-                    },
-                    headlineContent = { Text(moduleRestore) },
-                    modifier = Modifier.clickable {
-                        scope.launch {
-                            val result = restoreDialog.awaitConfirm(title = moduleRestore, content = restoreMessage)
-                            if (result == ConfirmResult.Confirmed) {
-                                loadingDialog.withLoading {
-                                    moduleRestore()
-                                    showRebootDialog = true
-                                }
-                            }
-                        }
+                        navigator.navigate(BackupRestoreScreenDestination)
                     }
                 )
             }
