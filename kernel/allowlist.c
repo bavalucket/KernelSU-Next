@@ -76,8 +76,8 @@ static void init_default_profiles()
 	default_root_profile.namespaces = 0;
 	strcpy(default_root_profile.selinux_domain, KSU_DEFAULT_SELINUX_DOMAIN);
 
-	// This means that we will not umount modules by default! So the user needs to umount modules manually from manager.
-	default_non_root_profile.umount_modules = false;
+	// This means that we will umount modules by default!
+	default_non_root_profile.umount_modules = true;
 }
 
 struct perm_data {
