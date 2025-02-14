@@ -154,10 +154,17 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 )
             }
 
+            val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+
             var umountChecked by rememberSaveable {
                 mutableStateOf(false)
             }
             if (ksuVersion != null) {
+
+                LaunchedEffect(Unit) {
+                    umountChecked = Natives.isDefaultUmountModules()
+                }
+
                 SwitchItem(
                     icon = Icons.Filled.RemoveModerator,
                     title = stringResource(id = R.string.settings_umount_modules_default),
@@ -169,8 +176,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     }
                 }
             }
-
-            val prefs = context.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
             val suSFS = getSuSFS()
             val isSUS_SU = getSuSFSFeatures()
