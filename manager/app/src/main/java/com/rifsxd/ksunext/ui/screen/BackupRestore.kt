@@ -21,6 +21,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Undo
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -51,6 +52,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import com.maxkeppeker.sheets.core.models.base.Header
@@ -208,6 +210,8 @@ fun BackupRestoreScreen(navigator: DestinationsNavigator) {
                     }
                 }
             )
+
+            HorizontalDivider(thickness = Dp.Hairline)
 
             val allowlistBackup = stringResource(id = R.string.allowlist_backup)
             val allowlistbackupMessage = stringResource(id = R.string.allowlist_backup_message)
