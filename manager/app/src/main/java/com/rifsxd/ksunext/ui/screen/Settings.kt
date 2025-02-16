@@ -158,7 +158,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             }
             if (ksuVersion != null) {
                 SwitchItem(
-                    icon = Icons.Filled.RemoveModerator,
+                    icon = Icons.Filled.FolderDelete,
                     title = stringResource(id = R.string.settings_umount_modules_default),
                     summary = stringResource(id = R.string.settings_umount_modules_default_summary),
                     checked = umountChecked
@@ -166,6 +166,24 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 ) {
                     if (Natives.setDefaultUmountModules(it)) {
                         umountChecked = it
+                    }
+                }
+            }
+
+            if (Natives.version >= Natives.MINIMAL_SUPPORTED_SU_COMPAT) {
+                var isSuDisabled by rememberSaveable {
+                    mutableStateOf(!Natives.isSuEnabled())
+                }
+                SwitchItem(
+                    icon = Icons.Filled.RemoveModerator,
+                    title = stringResource(id = R.string.settings_disable_su),
+                    summary = stringResource(id = R.string.settings_disable_su_summary),
+                    checked = isSuDisabled,
+                    enabled = !isSuDisabled // we can't re-enable su if it's disabled.
+                ) { checked ->
+                    val shouldEnable = !checked
+                    if (Natives.setSuEnabled(shouldEnable)) {
+                        isSuDisabled = !shouldEnable
                     }
                 }
             }
