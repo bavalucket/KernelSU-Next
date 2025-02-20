@@ -241,15 +241,15 @@ fun flashIt(
             onStderr
         )
 
-        is FlashIt.FlashModule -> flashModule(flashIt.uri, onFinish, onStdout, onStderr)
+        is FlashIt.FlashModule -> flashModule(flashIt.uri, onStdout, onStderr)
 
         is FlashIt.FlashModules -> {
-            flashModulesSequentially(flashIt.uris, onFinish, onStdout, onStderr)
+            flashModulesSequentially(flashIt.uris, onStdout, onStderr)
         }
 
-        FlashIt.FlashRestore -> restoreBoot(onFinish, onStdout, onStderr)
+        FlashIt.FlashRestore -> restoreBoot(onStdout, onStderr)
 
-        FlashIt.FlashUninstall -> uninstallPermanently(onFinish, onStdout, onStderr)
+        FlashIt.FlashUninstall -> uninstallPermanently(onStdout, onStderr)
     }
 }
 

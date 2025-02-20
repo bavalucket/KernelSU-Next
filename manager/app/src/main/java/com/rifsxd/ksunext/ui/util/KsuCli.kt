@@ -211,6 +211,7 @@ fun flashModule(
         file.delete()
 
         return FlashResult(result)
+    }
 }
 
 fun runModuleAction(
