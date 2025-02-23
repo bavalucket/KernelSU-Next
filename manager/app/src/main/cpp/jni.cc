@@ -298,11 +298,11 @@ Java_com_rifsxd_ksunext_Natives_uidShouldUmount(JNIEnv *env, jobject thiz, jint 
 }
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_me_weishu_kernelsu_Natives_isSuEnabled(JNIEnv *env, jobject thiz) {
+Java_com_rifsxd_ksunext_Natives_isSuEnabled(JNIEnv *env, jobject thiz) {
     return is_su_enabled();
 }
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_me_weishu_kernelsu_Natives_setSuEnabled(JNIEnv *env, jobject thiz, jboolean enabled) {
+Java_com_rifsxd_ksunext_Natives_setSuEnabled(JNIEnv *env, jobject thiz, jboolean enabled) {
     return set_su_enabled(enabled);
 }
