@@ -11,10 +11,6 @@
 #include "ksu.h"
 #include "throne_tracker.h"
 
-#ifdef MODULE
-#define CONFIG_KSU_WITH_KPROBES
-#endif
-
 static struct workqueue_struct *ksu_workqueue;
 
 bool ksu_queue_work(struct work_struct *work)
