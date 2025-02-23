@@ -5,7 +5,7 @@
     <string name="issue_report_body_2">Báo cáo hoặc góp ý nhanh nhất có thể!</string>
     <string name="issue_report_github">Báo cáo trên GitHub</string>
     <string name="issue_report_telegram">Liên hệ qua Telegram</string>
-    <string name="issue_report_github_link">https://github.com/rifsxd/KernelSU-Next/issues</string>
+    <string name="issue_report_github_link">https://github.com/KernelSU-Next/KernelSU-Next/issues</string>
     <string name="issue_report_telegram_link">https://t.me/ksunext</string>
     <string name="confirm">Xác nhận</string>
     <string name="app_name" translatable="false">KernelSU Next</string>
@@ -94,7 +94,7 @@
     <string name="cancel">Huỷ</string>
     <string name="later">Để sau</string>
     <string name="home_next_kernelsu">🔥 Bản dựng tiếp theo</string>
-    <string name="home_next_kernelsu_repo">https://github.com/rifsxd/KernelSU-Next</string>
+    <string name="home_next_kernelsu_repo">https://github.com/KernelSU-Next/KernelSU-Next</string>
     <string name="home_next_kernelsu_body">Nhánh thử nghiệm tiếp theo. Xem trong GitHub!</string>
     <string name="home_experimental_kernelsu">⚠️ Cảnh báo nhánh thử nghiệm cho nhà phát triển!</string>
     <string name="home_experimental_kernelsu_repo">127.0.0.1</string>

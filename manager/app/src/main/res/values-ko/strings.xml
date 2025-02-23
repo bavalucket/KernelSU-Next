@@ -5,7 +5,7 @@
     <string name="issue_report_body_2">가능한 한 빨리 보고하세요!</string>
     <string name="issue_report_github">GitHub에 보고</string>
     <string name="issue_report_telegram">Telegram을 통해 문의</string>
-    <string name="issue_report_github_link">https://github.com/rifsxd/KernelSU-Next/issues</string>
+    <string name="issue_report_github_link">https://github.com/KernelSU-Next/KernelSU-Next/issues</string>
     <string name="issue_report_telegram_link">https://t.me/ksunext</string>
     <string name="confirm">확인</string>
     <string name="app_name" translatable="false">KernelSU Next</string>
@@ -94,7 +94,7 @@
     <string name="cancel">취소</string>
     <string name="later">나중에</string>
     <string name="home_next_kernelsu">🔥 Next 빌드</string>
-    <string name="home_next_kernelsu_repo">https://github.com/rifsxd/KernelSU-Next</string>
+    <string name="home_next_kernelsu_repo">https://github.com/KernelSU-Next/KernelSU-Next</string>
     <string name="home_next_kernelsu_body">Next 시험 브랜치입니다. GitHub에서 확인하세요!</string>
     <string name="home_experimental_kernelsu">⚠️ 실험적 개발 버전 경고!</string>
     <string name="home_experimental_kernelsu_repo">127.0.0.1</string>

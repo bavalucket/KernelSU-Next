@@ -6,10 +6,10 @@
 
 Một giải pháp root từ nhân linux dành cho các thiết bị chạy Android
 
-[![Phiên bản mới nhất](https://img.shields.io/github/v/release/rifsxd/KernelSU-Next?label=Release&logo=github)](https://github.com/rifsxd/KernelSU-Next/releases/latest)
-[![CI build mới nhất](https://img.shields.io/badge/Nightly%20Release-gray?logo=hackthebox&logoColor=fff)](https://nightly.link/rifsxd/KernelSU-Next/workflows/build-manager-ci/next/Manager)
+[![Phiên bản mới nhất](https://img.shields.io/github/v/release/KernelSU-Next/KernelSU-Next?label=Release&logo=github)](https://github.com/KernelSU-Next/KernelSU-Next/releases/latest)
+[![CI build mới nhất](https://img.shields.io/badge/Nightly%20Release-gray?logo=hackthebox&logoColor=fff)](https://nightly.link/KernelSU-Next/KernelSU-Next/workflows/build-manager-ci/next/Manager)
 [![Gíây pháp: GPL v2](https://img.shields.io/badge/License-GPL%20v2-orange.svg?logo=gnu)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-[![Gíây phép GITHUB](https://img.shields.io/github/license/rifsxd/KernelSU-Next?logo=gnu)](/LICENSE)
+[![Gíây phép GITHUB](https://img.shields.io/github/license/KernelSU-Next/KernelSU-Next?logo=gnu)](/LICENSE)
 
 ## Tính năng
 
@@ -28,7 +28,7 @@ Hiện tại kernelSU Next chỉ hỗ trợ những cpu có `arm64-v8a`
 
 ## Sử dụng
 
-- [Hướng dẫn vá KernelSU Next vào Kernel của bạn (yêu cầu kernel source)](https://rifsxd.github.io/KernelSU-Next/)
+- [Hướng dẫn vá KernelSU Next vào Kernel của bạn (yêu cầu kernel source)](https://KernelSU-Next.github.io/KernelSU-Next/)
 
 ## Bảo mật
 
