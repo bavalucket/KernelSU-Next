@@ -648,12 +648,6 @@ int ksu_handle_setuid(struct cred *new, const struct cred *old)
 	try_umount("/apex/com.android.art/bin/dex2oat64", false, MNT_DETACH);
 	try_umount("/apex/com.android.art/bin/dex2oat32", false, MNT_DETACH);
 
-	// try umount misc configs
-	try_umount("/system/etc", false, MNT_DETACH);
-	try_umount("/product/etc", false, MNT_DETACH);
-	try_umount("/system/etc/sysconfig", false, MNT_DETACH);
-	try_umount("/product/etc/sysconfig", false, MNT_DETACH);
-
 	return 0;
 }
 
