@@ -69,7 +69,7 @@
     <string name="home_magic_mount">Magic Mount</string>
     <string name="home_overlayfs_mount">OverlayFS</string>
     <string name="unavailable">Niedostępne</string>
-    <string name="use_overlay_fs">Użyj OverlayFS (Beta)</string>
+    <string name="use_overlay_fs">Użyj OverlayFS</string>
     <string name="use_overlay_fs_summary">Przełącz pomiędzy OverlayFS, a Magic Mount dla modułu montowania.</string>
     <string name="reboot_required">Wymagany restart</string>
     <string name="reboot_message">Zmiany zostaną zastosowane po restarcie. Uruchomić ponownie?</string>
