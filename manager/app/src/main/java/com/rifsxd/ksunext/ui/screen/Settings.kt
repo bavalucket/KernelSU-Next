@@ -228,8 +228,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 )
             }
 
-            val isManager = Natives.becomeManager(ksuApp.packageName)
-
             var showRebootDialog by remember { mutableStateOf(false) }
 
             var showWarningDialog by remember { mutableStateOf(false) }
