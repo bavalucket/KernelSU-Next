@@ -25,9 +25,9 @@
     <string name="home_android">Wersja Androida</string>
     <string name="home_manager_version">Wersja managera</string>
     <string name="home_selinux_status">Status SELinux</string>
-    <string name="selinux_status_disabled">Wyłączony (Disabled)</string>
-    <string name="selinux_status_enforcing">Wymuszony (Enforcing)</string>
-    <string name="selinux_status_permissive">Pobłażliwy (Permissive)</string>
+    <string name="selinux_status_disabled">Wyłączony</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
+    <string name="selinux_status_permissive">Permissive</string>
     <string name="selinux_status_unknown">Nieznany</string>
     <string name="superuser">Superuser</string>
     <string name="module_failed_to_enable">Nie udało się włączyć modułu: %s</string>
