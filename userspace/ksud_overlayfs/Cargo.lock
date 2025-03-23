@@ -599,16 +599,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "fs4"
-version = "0.13.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "be058769cf1633370c3d0dac6bb9b223b8f18900cf808abadf7843192e706238"
-dependencies = [
- "rustix 0.38.44",
- "windows-sys 0.59.0",
-]
-
-[[package]]
 name = "generic-array"
 version = "0.14.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -816,7 +806,6 @@ dependencies = [
  "encoding_rs",
  "env_logger",
  "extattr",
- "fs4",
  "getopts",
  "hole-punch",
  "humansize",

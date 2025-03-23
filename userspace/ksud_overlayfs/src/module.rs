@@ -376,8 +376,7 @@ fn _install_module(zip: &str) -> Result<()> {
         humansize::format_size(zip_uncompressed_size, humansize::DECIMAL)
     );
 
-    let data_vfs = fs4::statvfs("/data").with_context(|| "Failed to stat /data".to_string())?;
-    let sparse_image_size = data_vfs.total_space();
+    let sparse_image_size = 6 << 30; // 6GB
     if !modules_img_exist && !modules_update_img_exist {
         // if no modules and modules_update, it is brand new installation, we should create a new img
         // create a tmp module img and mount it to modules_update
