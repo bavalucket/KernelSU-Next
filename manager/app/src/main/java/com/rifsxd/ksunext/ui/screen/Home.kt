@@ -450,7 +450,7 @@ private fun InfoCard() {
                 content = currentMountSystem().ifEmpty { stringResource(R.string.unavailable) },
                 icon = Icons.Filled.SettingsSuggest,
             )
-
+            
             val suSFS = getSuSFS()
             if (suSFS == "Supported") {
                 val isSUS_SU = getSuSFSFeatures() == "CONFIG_KSU_SUSFS_SUS_SU"
