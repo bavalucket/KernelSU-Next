@@ -600,6 +600,13 @@ fun susfsSUS_SU_Mode(): String {
     return result
 }
 
+fun currentMountSystem(): String {
+    val shell = getRootShell()
+    val cmd = "module mount"
+    val result = ShellUtils.fastCmd(shell, "${getKsuDaemonPath()} $cmd").trim()
+    return result.substringAfter(":").substringAfter(" ").trim()
+}
+
 fun setAppProfileTemplate(id: String, template: String): Boolean {
     val shell = getRootShell()
     val escapedTemplate = template.replace("\"", "\\\"")
