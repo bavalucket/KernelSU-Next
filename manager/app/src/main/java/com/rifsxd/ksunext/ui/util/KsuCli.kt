@@ -443,7 +443,7 @@ fun getFileName(context: Context, uri: Uri): String {
 
 fun moduleBackupDir(): String? {
     val shell = getRootShell()
-    val baseBackupDir = "/data/adb/modules_bak"
+    val baseBackupDir = "/data/adb/ksu/modules_bak"
     val resultBase = ShellUtils.fastCmd(shell, "mkdir -p $baseBackupDir").trim()
     if (resultBase.isNotEmpty()) return null
 
@@ -485,12 +485,12 @@ fun moduleMigration(): Boolean {
 fun moduleRestore(): Boolean {
     val shell = getRootShell()
 
-    val command = "ls -t /data/adb/modules_bak | head -n 1"
+    val command = "ls -t /data/adb/ksu/modules_bak | head -n 1"
     val latestBackupDir = ShellUtils.fastCmd(shell, command).trim()
 
     if (latestBackupDir.isEmpty()) return false
 
-    val sourceDir = "/data/adb/modules_bak/$latestBackupDir"
+    val sourceDir = "/data/adb/ksu/modules_bak/$latestBackupDir"
     val destinationDir = "/data/adb/modules_update"
 
     val createDestDirCommand = "mkdir -p $destinationDir"
@@ -504,7 +504,7 @@ fun moduleRestore(): Boolean {
 
 fun allowlistBackupDir(): String? {
     val shell = getRootShell()
-    val baseBackupDir = "/data/adb/allowlist_bak"
+    val baseBackupDir = "/data/adb/ksu/allowlist_bak"
     val resultBase = ShellUtils.fastCmd(shell, "mkdir -p $baseBackupDir").trim()
     if (resultBase.isNotEmpty()) return null
 
@@ -538,12 +538,12 @@ fun allowlistBackup(): Boolean {
 fun allowlistRestore(): Boolean {
     val shell = getRootShell()
 
-    val command = "ls -t /data/adb/allowlist_bak | head -n 1"
+    val command = "ls -t /data/adb/ksu/allowlist_bak | head -n 1"
     val latestBackupDir = ShellUtils.fastCmd(shell, command).trim()
 
     if (latestBackupDir.isEmpty()) return false
 
-    val sourceDir = "/data/adb/allowlist_bak/$latestBackupDir"
+    val sourceDir = "/data/adb/ksu/allowlist_bak/$latestBackupDir"
     val destinationDir = "/data/adb/ksu/"
 
     val createDestDirCommand = "mkdir -p $destinationDir"
