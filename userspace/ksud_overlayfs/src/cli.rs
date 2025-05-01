@@ -97,21 +97,21 @@ enum Commands {
     //     #[arg(long, default_value = None)]
     //     kmi: Option<String>,
     // }, // DISBAND LKM MODE
-
-    /// Restore boot or init_boot images patched by KernelSU Next
-    BootRestore {
-        /// boot image path, if not specified, will try to find the boot image automatically
-        #[arg(short, long)]
-        boot: Option<PathBuf>,
-
-        /// Flash it to boot partition after patch
-        #[arg(short, long, default_value = "false")]
-        flash: bool,
-
-        /// magiskboot path, if not specified, will search from $PATH
-        #[arg(long, default_value = None)]
-        magiskboot: Option<PathBuf>,
-    },
+    //
+    // /// Restore boot or init_boot images patched by KernelSU Next
+    // BootRestore {
+    //     /// boot image path, if not specified, will try to find the boot image automatically
+    //     #[arg(short, long)]
+    //     boot: Option<PathBuf>,
+    //
+    //     /// Flash it to boot partition after patch
+    //     #[arg(short, long, default_value = "false")]
+    //     flash: bool,
+    //
+    //     /// magiskboot path, if not specified, will search from $PATH
+    //     #[arg(long, default_value = None)]
+    //     magiskboot: Option<PathBuf>,
+    // },
 
     /// Show boot information
     BootInfo {
@@ -395,11 +395,11 @@ pub fn run() -> Result<()> {
                 return Ok(());
             }
         },
-        Commands::BootRestore {
-            boot,
-            magiskboot,
-            flash,
-        } => crate::boot_patch::restore(boot, magiskboot, flash),
+        // Commands::BootRestore {
+        //     boot,
+        //     magiskboot,
+        //     flash,
+        // } => crate::boot_patch::restore(boot, magiskboot, flash),
     };
 
     if let Err(e) = &result {
