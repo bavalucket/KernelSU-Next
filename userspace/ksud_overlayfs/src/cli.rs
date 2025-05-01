@@ -34,11 +34,11 @@ enum Commands {
     /// Trigger `boot-complete` event
     BootCompleted,
 
-    // /// Install KernelSU Next userspace component to system
-    // Install {
-    //     #[arg(long, default_value = None)]
-    //     magiskboot: Option<PathBuf>,
-    // }, // DISBAND LKM MODE
+    /// Install KernelSU Next userspace component to system
+    Install {
+         #[arg(long, default_value = None)]
+         magiskboot: Option<PathBuf>,
+     },
 
     /// Uninstall KernelSU Next modules and itself(LKM Only)
     Uninstall {
@@ -327,7 +327,7 @@ pub fn run() -> Result<()> {
                 Module::Shrink => module::shrink_ksu_images(),
             }
         }
-        // Commands::Install { magiskboot } => utils::install(magiskboot), // DISBAND LKM MODE
+        Commands::Install { magiskboot } => utils::install(magiskboot), // DISBAND LKM MODE
         Commands::Uninstall { magiskboot } => utils::uninstall(magiskboot),
         Commands::Sepolicy { command } => match command {
             Sepolicy::Patch { sepolicy } => crate::sepolicy::live_patch(&sepolicy),
