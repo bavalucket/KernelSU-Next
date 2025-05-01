@@ -11,17 +11,22 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.dergoogler.mmrl.platform.Platform
+import com.dergoogler.mmrl.platform.TIMEOUT_MILLIS
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.parcelize.Parcelize
 import com.rifsxd.ksunext.Natives
 import com.rifsxd.ksunext.ksuApp
 import com.rifsxd.ksunext.ui.util.HanziToPinyin
-import com.rifsxd.ksunext.ui.webui.getPackages
+import com.rifsxd.ksunext.ui.webui.packageManager
+import com.rifsxd.ksunext.ui.webui.userManager
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.withTimeoutOrNull
 import java.text.Collator
 import java.util.*
 
 class SuperUserViewModel : ViewModel() {
+    val isPlatformAlive get() = Platform.isAlive
 
     var refreshOnReturn by mutableStateOf(false)
         public set
@@ -93,11 +98,25 @@ class SuperUserViewModel : ViewModel() {
     suspend fun fetchAppList() {
         isRefreshing = true
 
+
         withContext(Dispatchers.IO) {
+            withTimeoutOrNull(TIMEOUT_MILLIS) {
+                while (!isPlatformAlive) {
+                    delay(500)
+                }
+            } ?: return@withContext // Exit early if timeout
+
             val pm = ksuApp.packageManager
             val start = SystemClock.elapsedRealtime()
 
-            val packages = Platform.getPackages(0).list
+            val userInfos = Platform.userManager.getUsers()
+            val packages = mutableListOf<PackageInfo>()
+            val packageManager = Platform.packageManager
+
+            for (userInfo in userInfos) {
+                Log.i(TAG, "fetchAppList: ${userInfo.id}")
+                packages.addAll(packageManager.getInstalledPackages(0, userInfo.id))
+            }
 
             apps = packages.map {
                 val appInfo = it.applicationInfo
