@@ -30,6 +30,8 @@ jobs:
         include:
           - target: aarch64-linux-android
             os: ubuntu-latest
+          - target: armv7-linux-androideabi
+            os: ubuntu-latest
     uses: ./.github/workflows/susfsd-aarch64.yml
     with:
       target: ${{ matrix.target }}
@@ -40,6 +42,8 @@ jobs:
     strategy:
       matrix:
         include:
+          - target: aarch64-linux-android
+            os: ubuntu-latest
           - target: armv7-linux-androideabi
             os: ubuntu-latest
     uses: ./.github/workflows/susfsd-arm.yml
