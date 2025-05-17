@@ -48,7 +48,7 @@ jobs:
       os: ${{ matrix.os }}
 
   build-ksud:
-    needs: build-susfsd
+    needs: build-susfsd-arm
     strategy:
       matrix:
         include:

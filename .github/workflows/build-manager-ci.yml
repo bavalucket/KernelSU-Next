@@ -23,22 +23,32 @@ jobs:
   #   uses: ./.github/workflows/build-lkm.yml
   #   secrets: inherit
 
-  build-susfsd:
-    # needs: build-lkm // DISBAND LKM MODE
+  build-susfsd-aarch64:
+    # needs: build-lkm
     strategy:
       matrix:
         include:
           - target: aarch64-linux-android
             os: ubuntu-latest
+    uses: ./.github/workflows/susfsd-aarch64.yml
+    with:
+      target: ${{ matrix.target }}
+      os: ${{ matrix.os }}
+      
+  build-susfsd-arm:
+    needs: build-susfsd-aarch64
+    strategy:
+      matrix:
+        include:
           - target: armv7-linux-androideabi
             os: ubuntu-latest
-    uses: ./.github/workflows/susfsd.yml
+    uses: ./.github/workflows/susfsd-arm.yml
     with:
       target: ${{ matrix.target }}
       os: ${{ matrix.os }}
 
   build-ksud:
-    needs: build-susfsd
+    needs: build-susfsd-arm
     strategy:
       matrix:
         include:
