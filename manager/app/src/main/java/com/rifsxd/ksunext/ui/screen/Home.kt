@@ -441,6 +441,9 @@ private fun InfoCard() {
             )
 
             Spacer(Modifier.height(16.dp))
+            InfoCardItem(stringResource(R.string.home_abi), Build.SUPPORTED_ABIS.joinToString(", "))
+
+            Spacer(Modifier.height(16.dp))
             InfoCardItem(
                 label = stringResource(R.string.home_selinux_status),
                 content = getSELinuxStatus(),
