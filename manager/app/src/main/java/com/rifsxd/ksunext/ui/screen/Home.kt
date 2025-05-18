@@ -257,11 +257,12 @@ private fun StatusCard(
 
                     val workingMode = when {
                         lkmMode == true -> " <LKM>"
-                        lkmMode == false || kernelVersion.isGKI() -> " <GKI>"
-                        lkmMode == null && kernelVersion.major < 4 -> " <U-LEGACY>"
-                        else -> " <LEGACY>"
+                        lkmMode == false || kernelVersion.isGKI() -> " <GKI2>"
+                        lkmMode == null && kernelVersion.isULegacy() -> " <U-LEGACY>"
+                        lkmMode == null && kernelVersion.isLegacy() -> " <LEGACY>"
+                        lkmMode == null && kernelVersion.isGKI1() -> " <GKI1>"
+                        else -> " <NON-STANDARD>"
                     }
-
 
                     val workingText =
                         "${stringResource(id = R.string.home_working)}$workingMode$safeMode"
