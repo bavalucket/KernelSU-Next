@@ -140,7 +140,7 @@ jobs:
         run: |
           cp -f ../ksud_overlayfs/aarch64-linux-android/release/ksud ../manager/app/src/main/jniLibs/arm64-v8a/libksud_overlayfs.so
           
-          cp -f ../ksud_overlayfs/armv7-linux-android/release/ksud ../manager/app/src/main/jniLibs/armeabi-v7a/libksud_overlayfs.so
+          cp -f ../ksud_overlayfs/armv7-linux-androideabi/release/ksud ../manager/app/src/main/jniLibs/armeabi-v7a/libksud_overlayfs.so
 
       - name: Download arm64 ksud_magic
         uses: actions/download-artifact@v4
