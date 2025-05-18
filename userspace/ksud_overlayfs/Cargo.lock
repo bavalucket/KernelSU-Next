@@ -655,7 +655,7 @@ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 [[package]]
 name = "hole-punch"
 version = "0.0.4-alpha.0"
-source = "git+https://github.com/KernelSU-Next/hole-punch#11ab7a61bfb98682b72fd7f58a47d8e5d997328e"
+source = "git+https://github.com/KernelSU-Next/hole-punch#b010cde4b07ba197988c1525f6bb584e7a9b31de"
 dependencies = [
  "cfg-if 0.1.10",
  "errno 0.2.8",
