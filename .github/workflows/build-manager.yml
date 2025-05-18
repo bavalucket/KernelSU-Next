@@ -113,7 +113,7 @@ jobs:
       - name: Download arm susfsd
         uses: actions/download-artifact@v4
         with:
-          name: susfsd-armv7-linux-androideabi
+          name: susfsd-armv7a-linux-androideabi
           path: .
 
       - name: Copy susfsd to app jniLibs
