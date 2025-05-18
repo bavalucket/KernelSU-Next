@@ -441,7 +441,11 @@ private fun InfoCard() {
             )
 
             Spacer(Modifier.height(16.dp))
-            InfoCardItem(stringResource(R.string.home_abi), Build.SUPPORTED_ABIS.joinToString(", "))
+            InfoCardItem(
+                label = stringResource(R.string.home_abi),
+                content = Build.SUPPORTED_ABIS.joinToString(", "),
+                icon = Icons.Filled.Memory,
+            )
 
             Spacer(Modifier.height(16.dp))
             InfoCardItem(
