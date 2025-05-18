@@ -420,7 +420,7 @@ private fun InfoCard() {
 
             InfoCardItem(
                 label = stringResource(R.string.home_kernel),
-                content = uname.release,
+                content = "${uname.release} (${uname.machine})",
                 icon = painterResource(R.drawable.ic_linux),
             )
 
