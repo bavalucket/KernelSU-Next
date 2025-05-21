@@ -62,10 +62,10 @@ int get_version() {
     return version;
 }
 
-bool get_hook_mode(char *mode, int mode_len) {
-    if (!mode || mode_len == 0) return false;
-    memset(mode, 0, mode_len);
-    return ksuctl(CMD_HOOK_MODE, mode, nullptr);
+const char* get_hook_mode() {
+    static char mode[16];
+    ksuctl(CMD_HOOK_MODE, mode, nullptr);
+    return mode;
 }
 
 bool get_allow_list(int *uids, int *size) {
