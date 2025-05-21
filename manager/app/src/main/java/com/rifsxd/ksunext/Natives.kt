@@ -51,6 +51,16 @@ object Natives {
     external fun uidShouldUmount(uid: Int): Boolean
 
     /**
+     * Get a string indicating the SU hook mode enabled in kernel.
+     * The return values are:
+     * - "Manual": Manual hooks was enabled.
+     * - "Kprobes": Kprobes hooks was enabled (CONFIG_KSU_KPROBES_HOOK).
+     *
+     * @return return hook mode, or null if unavailable.
+     */
+    external fun getHookMode(): String?
+
+    /**
      * Get the profile of the given package.
      * @param key usually the package name
      * @return return null if failed.
