@@ -24,6 +24,10 @@ object Natives {
 
     // 12404: Support disable sucompat mode
     const val MINIMAL_SUPPORTED_SU_COMPAT = 12404
+
+    // 12569: support get hook mode
+    const val MINIMAL_SUPPORTED_HOOK_MODE = 12569
+
     const val KERNEL_SU_DOMAIN = "u:r:su:s0"
 
     const val ROOT_UID = 0
