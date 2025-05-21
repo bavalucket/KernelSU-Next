@@ -324,7 +324,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
 
             var useWebUIX by rememberSaveable {
                 mutableStateOf(
-                    prefs.getBoolean("use_webuix", false)
+                    prefs.getBoolean("use_webuix", true)
                 )
             }
             if (ksuVersion != null) {
