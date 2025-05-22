@@ -6,6 +6,7 @@ import android.os.PowerManager
 import android.os.Handler
 import android.os.Looper
 import android.system.Os
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.compose.animation.*
 import androidx.compose.foundation.clickable
@@ -240,6 +241,9 @@ private fun StatusCard(
     lkmMode: Boolean?,
     onClickInstall: () -> Unit = {}
 ) {
+    val context = LocalContext.current
+    var tapCount by remember { mutableStateOf(0) }
+
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = run {
             if (ksuVersion != null) MaterialTheme.colorScheme.secondaryContainer
@@ -250,9 +254,19 @@ private fun StatusCard(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    if (kernelVersion.isGKI()) {
-                        onClickInstall()
+                    tapCount++
+                    if (tapCount == 10) {
+                        Toast.makeText(context, "Never gonna give you up! 💜", Toast.LENGTH_SHORT).show()
+                        // tapCount = 0
+                        val url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(url))
+                        intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+                        context.startActivity(intent)
                     }
+
+                    // if (kernelVersion.isGKI()) {
+                    //     onClickInstall()
+                    // }
                 }
                 .padding(24.dp), verticalAlignment = Alignment.CenterVertically) {
             when {
