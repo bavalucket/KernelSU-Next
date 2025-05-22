@@ -443,11 +443,12 @@ private fun InfoCard() {
             }
 
             Column {
-                val managerVersion = getManagerVersion(context)
-                InfoCardItem(
-                    label = stringResource(R.string.home_manager_version),
-                    content = "${managerVersion.first} (${managerVersion.second})",
-                    icon = painterResource(R.drawable.ic_ksu_next),
+                if (ksuVersion != null) {
+                    val managerVersion = getManagerVersion(context)
+                    InfoCardItem(
+                        label = stringResource(R.string.home_manager_version),
+                        content = "${managerVersion.first} (${managerVersion.second})",
+                        icon = painterResource(R.drawable.ic_ksu_next),
                 )
 
                 if (Natives.version >= Natives.MINIMAL_SUPPORTED_HOOK_MODE) {
