@@ -413,33 +413,33 @@ private fun InfoCard() {
 
             @Composable
             fun InfoCardItem(label: String, content: String, icon: Any? = null) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                if (icon != null) {
-                when (icon) {
-                    is ImageVector -> Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    modifier = Modifier.padding(end = 20.dp)
-                    )
-                    is Painter -> Icon(
-                    painter = icon,
-                    contentDescription = null,
-                    modifier = Modifier.padding(end = 20.dp)
-                    )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    if (icon != null) {
+                        when (icon) {
+                            is ImageVector -> Icon(
+                                imageVector = icon,
+                                contentDescription = null,
+                                modifier = Modifier.padding(end = 20.dp)
+                            )
+                            is Painter -> Icon(
+                                painter = icon,
+                                contentDescription = null,
+                                modifier = Modifier.padding(end = 20.dp)
+                            )
+                        }
+                    }
+                    Column {
+                        Text(
+                            text = label,
+                            style = MaterialTheme.typography.bodyLarge
+                        )
+                        Text(
+                            text = content,
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(top = 4.dp)
+                        )
+                    }
                 }
-                }
-                Column {
-                Text(
-                    text = label,
-                    style = MaterialTheme.typography.bodyLarge
-                )
-                Text(
-                    text = content,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(top = 4.dp)
-                )
-                }
-            }
             }
 
             Column {
@@ -449,87 +449,92 @@ private fun InfoCard() {
                         label = stringResource(R.string.home_manager_version),
                         content = "${managerVersion.first} (${managerVersion.second})",
                         icon = painterResource(R.drawable.ic_ksu_next),
-                )
+                    )
 
-                if (Natives.version >= Natives.MINIMAL_SUPPORTED_HOOK_MODE) {
+                    if (Natives.version >= Natives.MINIMAL_SUPPORTED_HOOK_MODE) {
+                        Spacer(Modifier.height(16.dp))
+                        InfoCardItem(
+                            label = stringResource(R.string.hook_mode),
+                            content = Natives.getHookMode() ?: stringResource(R.string.unavailable),
+                            icon = Icons.Filled.Phishing,
+                        )
+                    }
+
                     Spacer(Modifier.height(16.dp))
                     InfoCardItem(
-                        label = stringResource(R.string.hook_mode),
-                        content = Natives.getHookMode() ?: stringResource(R.string.unavailable),
-                        icon = Icons.Filled.Phishing,
+                        label = stringResource(R.string.home_mount_system),
+                        content = currentMountSystem().ifEmpty { stringResource(R.string.unavailable) },
+                        icon = Icons.Filled.SettingsSuggest,
                     )
+
+                    val suSFS = getSuSFS()
+                    if (suSFS == "Supported") {
+                        val isSUS_SU = getSuSFSFeatures() == "CONFIG_KSU_SUSFS_SUS_SU"
+                        val susSUMode = if (isSUS_SU) {
+                            val mode = susfsSUS_SU_Mode()
+                            val modeString =
+                                if (mode == "2") stringResource(R.string.enabled) else stringResource(R.string.disabled)
+                            "| SuS SU: $modeString"
+                        } else ""
+                        Spacer(Modifier.height(16.dp))
+                        InfoCardItem(
+                            label = stringResource(R.string.home_susfs_version),
+                            content = "${getSuSFSVersion()} (${getSuSFSVariant()}) $susSUMode",
+                            icon = painterResource(R.drawable.ic_sus),
+                        )
+                    }
                 }
 
-                Spacer(Modifier.height(16.dp))
-                InfoCardItem(
-                    label = stringResource(R.string.home_mount_system),
-                    content = currentMountSystem().ifEmpty { stringResource(R.string.unavailable) },
-                    icon = Icons.Filled.SettingsSuggest,
-                )
-
-                val suSFS = getSuSFS()
-                if (suSFS == "Supported") {
-                    val isSUS_SU = getSuSFSFeatures() == "CONFIG_KSU_SUSFS_SUS_SU"
-                    val susSUMode = if (isSUS_SU) {
-                        val mode = susfsSUS_SU_Mode()
-                        val modeString =
-                            if (mode == "2") stringResource(R.string.enabled) else stringResource(R.string.disabled)
-                        "| SuS SU: $modeString"
-                    } else ""
-                    Spacer(Modifier.height(16.dp))
-                    InfoCardItem(
-                        label = stringResource(R.string.home_susfs_version),
-                        content = "${getSuSFSVersion()} (${getSuSFSVariant()}) $susSUMode",
-                        icon = painterResource(R.drawable.ic_sus),
-                    )
+                if (!expanded) {
+                    Spacer(Modifier.height(12.dp))
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        IconButton(
+                            onClick = { expanded = true },
+                            modifier = Modifier.size(36.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.KeyboardArrowDown,
+                                contentDescription = "Show more"
+                            )
+                        }
+                    }
                 }
-            }
 
-            if (!expanded) {
-                Spacer(Modifier.height(12.dp))
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { expanded = true },
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.KeyboardArrowDown,
-                        contentDescription = "Show more"
-                    )
-                }
-            }
+                AnimatedVisibility(visible = expanded) {
+                    val uname = Os.uname()
+                    Column {
+                        Spacer(Modifier.height(16.dp))
+                        InfoCardItem(
+                            label = stringResource(R.string.home_kernel),
+                            content = "${uname.release} (${uname.machine})",
+                            icon = painterResource(R.drawable.ic_linux),
+                        )
 
-            AnimatedVisibility(visible = expanded) {
-                val uname = Os.uname()
-                Column {
-                    Spacer(Modifier.height(16.dp))
-                    InfoCardItem(
-                        label = stringResource(R.string.home_kernel),
-                        content = "${uname.release} (${uname.machine})",
-                        icon = painterResource(R.drawable.ic_linux),
-                    )
+                        Spacer(Modifier.height(16.dp))
+                        InfoCardItem(
+                            label = stringResource(R.string.home_android),
+                            content = "${Build.VERSION.RELEASE} (${Build.VERSION.SDK_INT})",
+                            icon = Icons.Filled.Android,
+                        )
 
-                    Spacer(Modifier.height(16.dp))
-                    InfoCardItem(
-                        label = stringResource(R.string.home_android),
-                        content = "${Build.VERSION.RELEASE} (${Build.VERSION.SDK_INT})",
-                        icon = Icons.Filled.Android,
-                    )
+                        Spacer(Modifier.height(16.dp))
+                        InfoCardItem(
+                            label = stringResource(R.string.home_abi),
+                            content = Build.SUPPORTED_ABIS.joinToString(", "),
+                            icon = Icons.Filled.Memory,
+                        )
 
-                    Spacer(Modifier.height(16.dp))
-                    InfoCardItem(
-                        label = stringResource(R.string.home_abi),
-                        content = Build.SUPPORTED_ABIS.joinToString(", "),
-                        icon = Icons.Filled.Memory,
-                    )
-
-                    Spacer(Modifier.height(16.dp))
-                    InfoCardItem(
-                        label = stringResource(R.string.home_selinux_status),
-                        content = getSELinuxStatus(),
-                        icon = Icons.Filled.Security,
-                    )
+                        Spacer(Modifier.height(16.dp))
+                        InfoCardItem(
+                            label = stringResource(R.string.home_selinux_status),
+                            content = getSELinuxStatus(),
+                            icon = Icons.Filled.Security,
+                        )
+                    }
                 }
             }
         }
